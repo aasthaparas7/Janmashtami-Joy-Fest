@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -23,7 +23,6 @@ const NAV = [
   { label: "Venue", href: "/#venue" },
   { label: "FAQs", href: "/#faqs" },
   { label: "Contact", href: "/#contact" },
-
 ];
 
 export function SkipLink() {
@@ -38,8 +37,26 @@ export function SkipLink() {
 }
 
 export function SiteHeader() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    // Initialize state
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-gold/30 bg-background/85 backdrop-blur-md">
+    <header 
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? "border-b border-gold/30 bg-background/95 backdrop-blur-md shadow-sm" 
+          : "border-b border-transparent bg-transparent"
+      }`}
+    >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5">
         
         {/* Left side: Logo */}

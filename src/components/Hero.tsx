@@ -5,6 +5,7 @@ import { Countdown } from "@/components/Countdown";
 import { FloatingFeather, Petals } from "@/components/Decor";
 import { EVENT } from "@/lib/event";
 import krishnaImage from "@/assets/Hero_Image_Lord_Krishna_and_Radha_Ji.jpg";
+import bgImage from "@/assets/home_page_background.png";
 
 function Chip({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) {
   return (
@@ -17,10 +18,14 @@ function Chip({ icon, children }: { icon: React.ReactNode; children: React.React
 
 export function Hero() {
   return (
-    <section id="home" className="gradient-dawn relative overflow-hidden pt-24 pb-16 sm:pt-28">
-      <div aria-hidden className="mandala-bg absolute inset-0 opacity-60" />
+    <section 
+      id="home" 
+      className="relative overflow-hidden pt-24 pb-16 sm:pt-28 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+      <div className="absolute inset-0 bg-background/20" />
+      <div aria-hidden className="mandala-bg absolute inset-0 opacity-20" />
       <Petals />
-      <FloatingFeather className="top-24 -left-8 w-24 rotate-12 sm:w-32" />
       <FloatingFeather className="top-1/2 -right-6 hidden w-28 -rotate-12 lg:block" />
       <div
         aria-hidden
@@ -35,7 +40,11 @@ export function Hero() {
           </p>
           <div className="ornate-rule mx-auto mt-4 w-44" />
           <h1 className="font-display mt-5 text-6xl leading-[1.05] text-primary sm:text-7xl lg:text-[5.5rem] drop-shadow-md">
-            Sri Krishna
+            <span className="relative inline-block">
+              <FloatingFeather className="absolute -top-10 -left-6 w-16 -rotate-[15deg] sm:-top-14 sm:-left-10 sm:w-24" />
+              Sri
+            </span>{" "}
+            Krishna
             <span className="text-gold-shimmer mt-2 block">Janmashtami</span>
             <span className="font-serif-deco text-peacock mt-3 block text-2xl tracking-[0.45em] sm:text-3xl">
               2026
