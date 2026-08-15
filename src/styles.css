@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -47,20 +48,20 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --font-display: "Yatra One", cursive;
-  --font-serif-deco: "Marcellus", serif;
+  --font-display: "Playfair Display", serif;
+  --font-serif-deco: "Playfair Display", serif;
   --font-sans: "Mukta", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
   --radius: 1.25rem;
 
-  --background: oklch(0.985 0.025 95);
-  --foreground: oklch(0.26 0.06 265);
+  --background: oklch(0.985 0.02 90); /* warm cream */
+  --foreground: oklch(0.25 0.1 140); /* deep forest green */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.26 0.06 265);
+  --card-foreground: oklch(0.25 0.1 140);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.26 0.06 265);
+  --popover-foreground: oklch(0.25 0.1 140);
 
   --primary: oklch(0.42 0.19 268);
   --primary-foreground: oklch(0.99 0.02 95);

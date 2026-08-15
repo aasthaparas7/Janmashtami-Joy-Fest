@@ -19,8 +19,9 @@ import {
 } from "@/components/PosterPrizes";
 import { FestivalAssistant } from "@/components/FestivalAssistant";
 import { PeacockFluteParallax } from "@/components/PeacockFluteParallax";
+import { CountdownSection } from "@/components/CountdownSection";
 import {
-  FloatingWhatsApp,
+  FloatingSocials,
   SiteFooter,
   SiteHeader,
   SkipLink,
@@ -102,7 +103,7 @@ function Index() {
       <SiteHeader />
       <main id="main-content">
         <Hero />
-        <LastYearHighlights />
+        <CountdownSection />
         <Highlights />
         <PeacockFluteParallax />
         <Schedule />
@@ -122,7 +123,7 @@ function Index() {
         <WhatsAppSection />
         <SocialShare />
       </main>
-      <FloatingWhatsApp />
+      <FloatingSocials />
       <StickyCta />
       <SiteFooter />
     </div>
