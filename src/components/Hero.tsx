@@ -59,10 +59,10 @@ export function Hero() {
               {EVENT.organiser}
             </p>
             <div className="ornate-rule mx-auto mt-4 w-44 lg:mx-0" />
-            <h1 className="mt-5 text-4xl leading-[1.05] text-primary sm:text-6xl">
+            <h1 className="font-display mt-5 text-6xl leading-[1.05] text-primary sm:text-7xl lg:text-[5.5rem] drop-shadow-md">
               Sri Krishna
-              <span className="text-gold-shimmer mt-1 block">Janmashtami</span>
-              <span className="mt-2 block font-serif-deco text-lg tracking-[0.45em] text-peacock sm:text-xl">
+              <span className="text-gold-shimmer mt-2 block">Janmashtami</span>
+              <span className="font-serif-deco text-peacock mt-3 block text-2xl tracking-[0.45em] sm:text-3xl">
                 2026
               </span>
             </h1>
@@ -74,12 +74,21 @@ export function Hero() {
               celebrations.
             </p>
 
-            <div className="mt-6 flex flex-wrap justify-center gap-2 lg:justify-start">
+            <div className="mt-8 flex flex-wrap justify-center gap-2 lg:justify-start">
               <Chip icon={<CalendarDays className="size-4" />}>{EVENT.dateLabel}</Chip>
               <Chip icon={<Clock className="size-4" />}>{EVENT.timeLabel}</Chip>
-              <Chip icon={<MapPin className="size-4" />}>
-                {EVENT.venueName}, {EVENT.venueAddress}
-              </Chip>
+            </div>
+
+            <div className="mt-6 mx-auto lg:mx-0 max-w-md rounded-2xl border border-gold/30 bg-card/40 p-4 backdrop-blur-sm shadow-soft">
+              <div className="flex items-center gap-4 text-left">
+                <div className="flex shrink-0 items-center justify-center rounded-full bg-saffron/15 p-3 text-saffron">
+                  <MapPin className="size-6" />
+                </div>
+                <div>
+                  <p className="font-serif-deco text-lg font-bold text-primary">{EVENT.venueName}</p>
+                  <p className="text-sm text-muted-foreground leading-snug mt-0.5">{EVENT.venueAddress}</p>
+                </div>
+              </div>
             </div>
 
             <div className="mt-5 flex flex-wrap justify-center gap-2 lg:justify-start">

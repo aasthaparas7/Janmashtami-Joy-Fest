@@ -443,51 +443,28 @@ export function SocialShare() {
       <div className="mx-auto max-w-3xl px-4">
         <SectionTitle eyebrow="Spread the joy" title="Follow & Share the Celebration" />
         <div className="gold-frame rounded-3xl bg-secondary/25 p-6 text-center">
-          <div className="flex flex-wrap justify-center gap-3">
-            <Button asChild variant="royal">
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button asChild className="bg-gradient-to-tr from-[#fd5949] to-[#d6249f] hover:opacity-90 text-white font-semibold transition-all hover:-translate-y-0.5 shadow-sm border-0">
               <a href="https://instagram.com/iskconbangalore" target="_blank" rel="noreferrer">
-                <Instagram /> Instagram
+                <Instagram className="size-4 mr-2" /> Instagram
               </a>
             </Button>
-            <Button asChild variant="royal">
+            <Button asChild className="bg-[#1877F2] hover:bg-[#1877F2]/90 text-white font-semibold transition-all hover:-translate-y-0.5 shadow-sm border-0">
               <a href="https://facebook.com/iskconbangalore" target="_blank" rel="noreferrer">
-                <Facebook /> Facebook
+                <Facebook className="size-4 mr-2" /> Facebook
               </a>
             </Button>
-            <Button asChild variant="whatsapp">
-              <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer">
-                <MessageCircle /> WhatsApp
-              </a>
-            </Button>
-          </div>
-          <div className="deco-divider my-6" />
-          <p className="font-serif-deco text-lg text-primary">Share Event</p>
-          <div className="mt-3 flex flex-wrap justify-center gap-3">
-            <Button asChild variant="outlineGold">
+            <Button asChild className="bg-[#25D366] hover:bg-[#25D366]/90 text-white font-semibold transition-all hover:-translate-y-0.5 shadow-sm border-0">
               <a
                 href={`https://wa.me/?text=${encodeURIComponent(`${SHARE_TEXT} ${url}`)}`}
                 target="_blank"
                 rel="noreferrer"
               >
-                WhatsApp
+                <MessageCircle className="size-4 mr-2" /> WhatsApp
               </a>
             </Button>
-            <Button asChild variant="outlineGold">
-              <a
-                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Facebook
-              </a>
-            </Button>
-            <Button asChild variant="outlineGold">
-              <a href="https://instagram.com" target="_blank" rel="noreferrer">
-                Instagram
-              </a>
-            </Button>
-            <Button variant="gold" onClick={copy}>
-              <Copy /> Copy Link
+            <Button variant="gold" onClick={copy} className="font-semibold transition-all hover:-translate-y-0.5 shadow-sm">
+              <Copy className="size-4 mr-2" /> Copy Link
             </Button>
           </div>
         </div>
