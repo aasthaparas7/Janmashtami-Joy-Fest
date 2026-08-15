@@ -35,7 +35,7 @@ export function PosterDownload() {
         });
       };
       
-      const img1 = await loadImage(POSTER_PAGES[0].src);
+      const img1 = await loadImage(POSTER_PAGES[0]!.src);
       const pdf = new jsPDF({
         orientation: img1.width > img1.height ? "landscape" : "portrait",
         unit: "px",
@@ -44,7 +44,7 @@ export function PosterDownload() {
       pdf.addImage(img1, "PNG", 0, 0, img1.width, img1.height);
       
       for (let i = 1; i < POSTER_PAGES.length; i++) {
-        const img = await loadImage(POSTER_PAGES[i].src);
+        const img = await loadImage(POSTER_PAGES[i]!.src);
         pdf.addPage([img.width, img.height], img.width > img.height ? "landscape" : "portrait");
         pdf.addImage(img, "PNG", 0, 0, img.width, img.height);
       }
