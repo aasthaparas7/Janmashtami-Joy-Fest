@@ -40,21 +40,27 @@ export function SkipLink() {
 export function SiteHeader() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-gold/30 bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5">
-        <Link to="/" className="flex min-w-0 flex-1 items-center gap-2 py-1">
-          <span aria-hidden className="text-xl">
-            🦚
-          </span>
-          <span className="min-w-0">
-            <span className="block truncate font-display text-base text-primary sm:text-lg">
-              Janmashtami 2026
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5">
+        
+        {/* Left side: Logo */}
+        <div className="flex flex-1 justify-start">
+          <Link to="/" className="flex min-w-0 items-center gap-2 py-1">
+            <span aria-hidden className="text-xl">
+              🦚
             </span>
-            <span className="block truncate text-[10px] tracking-widest text-muted-foreground uppercase">
-              ISKCON
+            <span className="min-w-0">
+              <span className="block truncate font-display text-base text-primary sm:text-lg">
+                Janmashtami 2026
+              </span>
+              <span className="block truncate text-[10px] tracking-widest text-muted-foreground uppercase">
+                ISKCON
+              </span>
             </span>
-          </span>
-        </Link>
-        <nav aria-label="Main" className="hidden items-center gap-5 lg:flex">
+          </Link>
+        </div>
+
+        {/* Center: Navigation */}
+        <nav aria-label="Main" className="hidden shrink-0 items-center gap-5 lg:flex">
           {NAV.slice(1, 7).map((n) => (
             <a
               key={n.label}
@@ -65,13 +71,18 @@ export function SiteHeader() {
             </a>
           ))}
         </nav>
-        <Button asChild variant="gold" size="sm" className="h-11 lg:hidden">
-          <Link to="/register">Register</Link>
-        </Button>
-        <MobileMenu />
-        <Button asChild variant="gold" className="hidden lg:inline-flex">
-          <Link to="/register">Register Now</Link>
-        </Button>
+
+        {/* Right side: Actions */}
+        <div className="flex flex-1 items-center justify-end gap-2">
+          <Button asChild variant="gold" size="sm" className="h-11 lg:hidden">
+            <Link to="/register">Register</Link>
+          </Button>
+          <MobileMenu />
+          <Button asChild variant="gold" className="hidden lg:inline-flex">
+            <Link to="/register">Register Now</Link>
+          </Button>
+        </div>
+
       </div>
     </header>
   );
