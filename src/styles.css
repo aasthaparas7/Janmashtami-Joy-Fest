@@ -1,0 +1,357 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Sri Krishna Janmashtami 2026 — devotional festival design system.
+ * Palette: golden yellow, royal blue, peacock teal, saffron, deep green.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-saffron: var(--saffron);
+  --color-peacock: var(--peacock);
+  --color-royal: var(--royal);
+  --color-leaf: var(--leaf);
+  --color-cream: var(--cream);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --font-display: "Yatra One", cursive;
+  --font-serif-deco: "Marcellus", serif;
+  --font-sans: "Mukta", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1.25rem;
+
+  --background: oklch(0.985 0.025 95);
+  --foreground: oklch(0.26 0.06 265);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.26 0.06 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.26 0.06 265);
+
+  --primary: oklch(0.42 0.19 268);
+  --primary-foreground: oklch(0.99 0.02 95);
+  --secondary: oklch(0.82 0.17 82);
+  --secondary-foreground: oklch(0.28 0.08 60);
+  --muted: oklch(0.95 0.03 92);
+  --muted-foreground: oklch(0.48 0.05 70);
+  --accent: oklch(0.72 0.18 55);
+  --accent-foreground: oklch(0.99 0.02 95);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.88 0.06 88);
+  --input: oklch(0.88 0.06 88);
+  --ring: oklch(0.72 0.16 82);
+
+  --gold: oklch(0.84 0.16 86);
+  --gold-deep: oklch(0.68 0.14 78);
+  --saffron: oklch(0.72 0.18 55);
+  --peacock: oklch(0.55 0.12 205);
+  --royal: oklch(0.42 0.19 268);
+  --leaf: oklch(0.5 0.12 155);
+  --cream: oklch(0.98 0.03 95);
+
+  --chart-1: oklch(0.42 0.19 268);
+  --chart-2: oklch(0.72 0.18 55);
+  --chart-3: oklch(0.55 0.12 205);
+  --chart-4: oklch(0.84 0.16 86);
+  --chart-5: oklch(0.5 0.12 155);
+
+  --gradient-royal: linear-gradient(135deg, oklch(0.36 0.17 270), oklch(0.5 0.13 215));
+  --gradient-gold: linear-gradient(135deg, oklch(0.88 0.15 92), oklch(0.72 0.17 62));
+  --gradient-dawn: linear-gradient(180deg, oklch(0.99 0.03 96), oklch(0.94 0.07 88));
+  --shadow-soft: 0 10px 30px -12px oklch(0.42 0.19 268 / 0.25);
+  --shadow-gold: 0 12px 34px -10px oklch(0.72 0.17 62 / 0.45);
+}
+
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+}
+
+@utility gradient-royal {
+  background-image: var(--gradient-royal);
+}
+
+@utility gradient-gold {
+  background-image: var(--gradient-gold);
+}
+
+@utility gradient-dawn {
+  background-image: var(--gradient-dawn);
+}
+
+@utility text-gold-gradient {
+  background-image: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+@utility shadow-gold {
+  box-shadow: var(--shadow-gold);
+}
+
+@utility gold-frame {
+  border: 1px solid color-mix(in oklab, var(--gold) 60%, transparent);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklab, var(--gold) 25%, transparent),
+    var(--shadow-soft);
+}
+
+@utility deco-divider {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--gold) 80%, transparent),
+    transparent
+  );
+}
+
+@utility lift-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-gold);
+  }
+}
+
+@keyframes float-feather {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(6deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(110vh) translateX(40px) rotate(320deg);
+    opacity: 0;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-float-feather {
+  animation: float-feather 7s ease-in-out infinite;
+}
+
+@utility animate-petal {
+  animation: petal-fall linear infinite;
+}
+
+@utility animate-rise {
+  animation: rise-in 0.7s ease-out both;
+}
+
+/* ---- Ornamental festival layer ---- */
+
+@keyframes gold-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes halo-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes slow-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@utility text-gold-shimmer {
+  background-image: linear-gradient(
+    100deg,
+    oklch(0.72 0.17 62),
+    oklch(0.93 0.14 95),
+    oklch(0.72 0.17 62),
+    oklch(0.93 0.14 95)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gold-shimmer 6s linear infinite;
+}
+
+@utility animate-halo {
+  animation: halo-pulse 5s ease-in-out infinite;
+}
+
+@utility animate-slow-spin {
+  animation: slow-spin 90s linear infinite;
+}
+
+/* Subtle temple-print texture for hero/backdrops */
+@utility mandala-bg {
+  background-image:
+    radial-gradient(
+      circle at 12% 18%,
+      color-mix(in oklab, var(--gold) 22%, transparent) 0 2px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 62% 8%,
+      color-mix(in oklab, var(--saffron) 16%, transparent) 0 2px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 82% 42%,
+      color-mix(in oklab, var(--peacock) 16%, transparent) 0 2px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 32% 72%,
+      color-mix(in oklab, var(--gold) 18%, transparent) 0 2px,
+      transparent 3px
+    );
+  background-size: 220px 220px;
+}
+
+/* Arch / torana shaped frame used around the deity artwork */
+@utility arch-frame {
+  border-radius: 999px 999px 2rem 2rem;
+  border: 1px solid color-mix(in oklab, var(--gold) 65%, transparent);
+  box-shadow:
+    inset 0 0 0 6px color-mix(in oklab, var(--gold) 14%, transparent),
+    0 24px 60px -24px color-mix(in oklab, var(--royal) 55%, transparent);
+}
+
+@utility ornate-rule {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--gold) 85%, transparent),
+    transparent
+  );
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 9px;
+    height: 9px;
+    translate: -50% -50%;
+    rotate: 45deg;
+    background: var(--gold);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--gold) 22%, transparent);
+  }
+}
+
+@utility glass-chip {
+  border: 1px solid color-mix(in oklab, var(--gold) 45%, transparent);
+  background: color-mix(in oklab, white 72%, transparent);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px -16px oklch(0.42 0.19 268 / 0.6);
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
