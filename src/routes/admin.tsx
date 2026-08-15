@@ -24,7 +24,7 @@ export const Route = createFileRoute("/admin")({
     meta: [
       { title: "Admin Dashboard | Janmashtami 2026 Registrations" },
       { name: "robots", content: "noindex" },
-      { name: "description", content: "Internal registrations dashboard for ISKCON HBR Layout." },
+      { name: "description", content: "Internal registrations dashboard for ISKCON." },
       { property: "og:title", content: "Admin Dashboard | Janmashtami 2026" },
       { property: "og:description", content: "Internal registrations dashboard." },
     ],

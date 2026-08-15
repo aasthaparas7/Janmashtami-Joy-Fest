@@ -50,7 +50,7 @@ export function SiteHeader() {
               Janmashtami 2026
             </span>
             <span className="block truncate text-[10px] tracking-widest text-muted-foreground uppercase">
-              ISKCON HBR Layout
+              ISKCON
             </span>
           </span>
         </Link>
@@ -165,7 +165,7 @@ export function SiteFooter() {
     <footer className="gradient-royal border-t border-gold/30 pt-12 pb-28 text-cream sm:pb-12">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 md:grid-cols-3">
         <div>
-          <h3 className="text-xl text-gold">ISKCON HBR Layout Bengaluru</h3>
+          <h3 className="text-xl text-gold">ISKCON Bengaluru</h3>
           <p className="font-serif-deco mt-1 text-cream/85">Sri Krishna Janmashtami 2026</p>
           <p className="mt-4 text-sm text-cream/75">{EVENT.dateLabel}</p>
           <p className="text-sm text-cream/75">
@@ -199,7 +199,7 @@ export function SiteFooter() {
         </div>
       </div>
       <p className="mt-10 text-center text-xs text-cream/60">
-        © 2026 ISKCON HBR Layout Bengaluru · Hare Krishna
+        © 2026 ISKCON Bengaluru · Hare Krishna
       </p>
     </footer>
   );

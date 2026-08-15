@@ -85,8 +85,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Celebrate Sri Krishna Janmashtami 2026 at SLS International Gurukul, Horamavu, Bengaluru on 5th September.",
       },
-      { name: "author", content: "ISKCON HBR Layout Bengaluru" },
-      { property: "og:site_name", content: "ISKCON HBR Layout Bengaluru" },
+      { name: "author", content: "ISKCON Bengaluru" },
+      { property: "og:site_name", content: "ISKCON Bengaluru" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#f5c542" },

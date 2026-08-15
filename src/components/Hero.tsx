@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Countdown } from "@/components/Countdown";
 import { FloatingFeather, Petals } from "@/components/Decor";
 import { EVENT } from "@/lib/event";
-import krishnaAsset from "@/assets/krishna-hero.jpg.asset.json";
+import krishnaImage from "@/assets/Hero_Image_Lord_Krishna_and_Radha_Ji.jpg";
 
 function Chip({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) {
   return (
@@ -40,11 +40,11 @@ export function Hero() {
           />
           <div className="arch-frame overflow-hidden bg-card p-2">
             <img
-              src={krishnaAsset.url}
+              src={krishnaImage}
               alt="Sri Sri Radha Krishna deities adorned with flower garlands"
               width={1024}
               height={1280}
-              className="h-auto w-full rounded-[999px_999px_1.4rem_1.4rem] object-cover"
+              className="h-auto w-full rounded-[999px_999px_1.4rem_1.4rem] object-cover [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)] -webkit-[mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)]"
             />
           </div>
           <div className="glass-chip absolute -bottom-5 left-1/2 -translate-x-1/2 rounded-full px-5 py-2 text-center text-xs font-semibold whitespace-nowrap text-primary">

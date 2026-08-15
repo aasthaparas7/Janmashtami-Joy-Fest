@@ -1,7 +1,7 @@
 export const EVENT = {
   title: "Sri Krishna Janmashtami",
   year: "2026",
-  organiser: "ISKCON HBR Layout Bengaluru",
+  organiser: "ISKCON Bengaluru",
   founder: "His Divine Grace A.C. Bhaktivedanta Swami Prabhupada",
   dateLabel: "Saturday, 5th September 2026",
   timeLabel: "10:00 AM – 9:00 PM",
@@ -26,7 +26,7 @@ export const MAPS_QUERY = encodeURIComponent(
 export const MAPS_DIRECTIONS = `https://www.google.com/maps/dir/?api=1&destination=${MAPS_QUERY}`;
 export const MAPS_EMBED = `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`;
 export const WHATSAPP_LINK = `https://wa.me/${EVENT.phoneIntl}?text=${encodeURIComponent(
-  "Hare Krishna! I would like to know more about Sri Krishna Janmashtami 2026 at ISKCON HBR Layout.",
+  "Hare Krishna! I would like to know more about Sri Krishna Janmashtami 2026 at ISKCON.",
 )}`;
 
 export const HIGHLIGHTS = [
@@ -286,7 +286,7 @@ export const SPONSOR_LOGO_SLOTS = 4;
 
 export const EVENT_PARTNERS: { name: string; role: string }[] = [
   { name: "SLS International Gurukul", role: "Venue Partner" },
-  { name: "ISKCON HBR Layout Bengaluru", role: "Organiser" },
+  { name: "ISKCON Bengaluru", role: "Organiser" },
 ];
 
 export const WINNER_CATEGORIES: { key: string; age: string }[] = [
@@ -297,7 +297,7 @@ export const WINNER_CATEGORIES: { key: string; age: string }[] = [
 ];
 
 export const SPONSOR_WHATSAPP = `https://wa.me/${EVENT.phoneIntl}?text=${encodeURIComponent(
-  "Hare Krishna! I am interested in sponsoring / partnering for Sri Krishna Janmashtami 2026 at ISKCON HBR Layout.",
+  "Hare Krishna! I am interested in sponsoring / partnering for Sri Krishna Janmashtami 2026 at ISKCON.",
 )}`;
 
 export const LAST_YEAR_STATS: { value: string; label: string }[] = [

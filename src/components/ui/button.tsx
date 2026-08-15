@@ -20,7 +20,7 @@ const buttonVariants = cva(
         royal:
           "gradient-royal text-primary-foreground shadow-soft font-semibold hover:brightness-110 hover:-translate-y-0.5 transition-all",
         outlineGold:
-          "border border-gold/70 bg-transparent text-primary font-semibold hover:bg-gold/15 transition-colors",
+          "border border-gold/70 bg-card/30 backdrop-blur-md text-primary font-semibold hover:bg-gold/15 hover:-translate-y-0.5 transition-all shadow-sm",
         whatsapp: "bg-leaf text-primary-foreground font-semibold shadow-soft hover:brightness-110",
       },
       size: {

@@ -35,10 +35,10 @@ import {
 import galleryDance from "@/assets/gallery-dance.jpg";
 import galleryDiyas from "@/assets/gallery-diyas.jpg";
 import galleryFamily from "@/assets/gallery-family.jpg";
-import krishnaAsset from "@/assets/krishna-hero.jpg.asset.json";
+import krishnaImage from "@/assets/Hero_Image_Lord_Krishna_and_Radha_Ji.jpg";
 
 const SHARE_TEXT =
-  "Sri Krishna Janmashtami 2026 · ISKCON HBR Layout Bengaluru · 5th September 2026 at SLS International Gurukul, Horamavu.";
+  "Sri Krishna Janmashtami 2026 · ISKCON Bengaluru · 5th September 2026 at SLS International Gurukul, Horamavu.";
 
 function useShareUrl() {
   const [url, setUrl] = useState("");
@@ -175,7 +175,7 @@ const GALLERY = [
     caption: "Families celebrating together",
   },
   {
-    src: krishnaAsset.url,
+    src: krishnaImage,
     alt: "Sri Sri Radha Krishna deities adorned with flower garlands",
     caption: "Sri Sri Radha Krishna deities",
   },
@@ -334,11 +334,10 @@ export function Venue() {
                   key={m.key}
                   type="button"
                   onClick={() => setMode(m.key)}
-                  className={`rounded-full border px-4 py-1.5 text-xs font-semibold transition-colors ${
-                    mode === m.key
+                  className={`rounded-full border px-4 py-1.5 text-xs font-semibold transition-colors ${mode === m.key
                       ? "border-transparent bg-saffron text-primary-foreground"
                       : "border-border text-muted-foreground hover:text-primary"
-                  }`}
+                    }`}
                 >
                   {m.label}
                 </button>

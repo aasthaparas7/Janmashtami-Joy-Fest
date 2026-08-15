@@ -8,8 +8,8 @@ import { EVENT } from "@/lib/event";
 
 const POSTER_PDF = "/janmashtami-2026-poster.pdf";
 const POSTER_PAGES = [
-  { src: "/poster/page-1.jpg", alt: "Sri Krishna Janmashtami 2026 event poster with schedule and venue" },
-  { src: "/poster/page-2.jpg", alt: "Janmashtami 2026 competitions poster with categories and prizes" },
+  { src: "/poster/Poster_1.png", alt: "Sri Krishna Janmashtami 2026 event poster with schedule and venue" },
+  { src: "/poster/Poster_2.png", alt: "Janmashtami 2026 competitions poster with categories and prizes" },
 ];
 
 /** Downloadable flyer / poster with preview of both pages. */
@@ -36,7 +36,7 @@ export function PosterDownload() {
                   Page {i + 1}
                 </span>
                 <Button asChild variant="outlineGold" size="sm">
-                  <a href={p.src} download={`janmashtami-2026-poster-${i + 1}.jpg`}>
+                  <a href={p.src} download={`janmashtami-2026-poster-${i + 1}.png`}>
                     <FileImage /> Save image
                   </a>
                 </Button>
