@@ -10,8 +10,8 @@ import { EVENT } from "@/lib/event";
 
 const POSTER_PDF = "/janmashtami-2026-poster.pdf";
 const POSTER_PAGES = [
-  { src: "/poster/Poster_1.png", alt: "Sri Krishna Janmashtami 2026 event poster with schedule and venue" },
-  { src: "/poster/Poster_2.png", alt: "Janmashtami 2026 competitions poster with categories and prizes" },
+  { src: "/poster/Poster_1.jpg", alt: "Sri Krishna Janmashtami 2026 event poster with schedule and venue" },
+  { src: "/poster/Poster_2.jpg", alt: "Janmashtami 2026 competitions poster with categories and prizes" },
 ];
 
 /** Downloadable flyer / poster with preview of both pages. */
@@ -22,9 +22,9 @@ export function PosterDownload() {
     try {
       setIsGenerating(true);
       toast.info("Generating PDF, please wait...");
-      
+
       const { jsPDF } = await import("jspdf");
-      
+
       const loadImage = (src: string): Promise<HTMLImageElement> => {
         return new Promise((resolve, reject) => {
           const img = new Image();
@@ -34,7 +34,7 @@ export function PosterDownload() {
           img.src = src;
         });
       };
-      
+
       const img1 = await loadImage(POSTER_PAGES[0]!.src);
       const pdf = new jsPDF({
         orientation: img1.width > img1.height ? "landscape" : "portrait",
@@ -42,13 +42,13 @@ export function PosterDownload() {
         format: [img1.width, img1.height]
       });
       pdf.addImage(img1, "PNG", 0, 0, img1.width, img1.height);
-      
+
       for (let i = 1; i < POSTER_PAGES.length; i++) {
         const img = await loadImage(POSTER_PAGES[i]!.src);
         pdf.addPage([img.width, img.height], img.width > img.height ? "landscape" : "portrait");
         pdf.addImage(img, "PNG", 0, 0, img.width, img.height);
       }
-      
+
       pdf.save("Sri-Krishna-Janmashtami-2026-Poster.pdf");
       toast.success("PDF downloaded successfully!");
     } catch (err) {
@@ -81,7 +81,7 @@ export function PosterDownload() {
                     />
                     {/* Gradient overlay for text contrast */}
                     <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-b-2xl" />
-                    
+
                     <div className="absolute inset-x-0 bottom-6 flex justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                       <Button asChild variant="gold" size="sm" className="shadow-[0_4px_24px_rgba(0,0,0,0.5)] ring-2 ring-gold/40 hover:ring-gold" onClick={(e) => e.stopPropagation()}>
                         <a href={p.src} download={`janmashtami-2026-poster-${i + 1}.png`}>
