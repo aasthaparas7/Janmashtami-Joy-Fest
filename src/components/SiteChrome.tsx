@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -23,7 +23,6 @@ const NAV = [
   { label: "Venue", href: "/#venue" },
   { label: "FAQs", href: "/#faqs" },
   { label: "Contact", href: "/#contact" },
-
 ];
 
 export function SkipLink() {
@@ -38,23 +37,54 @@ export function SkipLink() {
 }
 
 export function SiteHeader() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    // Initialize state
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-gold/30 bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5">
-        <Link to="/" className="flex min-w-0 flex-1 items-center gap-2 py-1">
-          <span aria-hidden className="text-xl">
-            🦚
-          </span>
-          <span className="min-w-0">
-            <span className="block truncate font-display text-base text-primary sm:text-lg">
-              Janmashtami 2026
+    <header 
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? "border-b border-gold/30 bg-background/95 backdrop-blur-md shadow-sm" 
+          : "border-b border-transparent bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5">
+        
+        {/* Left side: Logo */}
+        <div className="flex flex-1 justify-start">
+          <Link to="/" className="flex min-w-0 items-center gap-2 py-1 group">
+            <div className="relative w-12 h-10 sm:w-16 sm:h-12 flex-shrink-0">
+              {/* Soft ethereal glow behind the logo */}
+              <div className="absolute -top-1 left-1 w-14 h-14 sm:-top-1 sm:left-2 sm:w-20 sm:h-20 bg-white/60 blur-[12px] sm:blur-xl rounded-full z-[50]" />
+              <img 
+                src="/Logo.png" 
+                alt="Janmashtami Logo" 
+                className="absolute -top-3 left-0 w-16 max-w-none sm:-top-4 sm:w-24 transition-transform duration-300 group-hover:scale-105 z-[60]"
+                style={{ filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.3)) drop-shadow(0 0 12px rgba(255,255,255,0.6))' }}
+              />
+            </div>
+            <span className="min-w-0 ml-2 sm:ml-6">
+              <span className="block truncate font-display text-base text-primary sm:text-lg transition-colors group-hover:text-saffron">
+                Janmashtami 2026
+              </span>
+              <span className="block truncate text-[10px] tracking-widest text-muted-foreground uppercase">
+                ISKCON
+              </span>
             </span>
-            <span className="block truncate text-[10px] tracking-widest text-muted-foreground uppercase">
-              ISKCON HBR Layout
-            </span>
-          </span>
-        </Link>
-        <nav aria-label="Main" className="hidden items-center gap-5 lg:flex">
+          </Link>
+        </div>
+
+        {/* Center: Navigation */}
+        <nav aria-label="Main" className="hidden shrink-0 items-center gap-5 lg:flex">
           {NAV.slice(1, 7).map((n) => (
             <a
               key={n.label}
@@ -65,13 +95,18 @@ export function SiteHeader() {
             </a>
           ))}
         </nav>
-        <Button asChild variant="gold" size="sm" className="h-11 lg:hidden">
-          <Link to="/register">Register</Link>
-        </Button>
-        <MobileMenu />
-        <Button asChild variant="gold" className="hidden lg:inline-flex">
-          <Link to="/register">Register Now</Link>
-        </Button>
+
+        {/* Right side: Actions */}
+        <div className="flex flex-1 items-center justify-end gap-2">
+          <Button asChild variant="gold" size="sm" className="h-11 lg:hidden">
+            <Link to="/register">Register</Link>
+          </Button>
+          <MobileMenu />
+          <Button asChild variant="gold" className="hidden lg:inline-flex">
+            <Link to="/register">Register Now</Link>
+          </Button>
+        </div>
+
       </div>
     </header>
   );
@@ -165,7 +200,7 @@ export function SiteFooter() {
     <footer className="gradient-royal border-t border-gold/30 pt-12 pb-28 text-cream sm:pb-12">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 md:grid-cols-3">
         <div>
-          <h3 className="text-xl text-gold">ISKCON HBR Layout Bengaluru</h3>
+          <h3 className="text-xl text-gold">ISKCON Bengaluru</h3>
           <p className="font-serif-deco mt-1 text-cream/85">Sri Krishna Janmashtami 2026</p>
           <p className="mt-4 text-sm text-cream/75">{EVENT.dateLabel}</p>
           <p className="text-sm text-cream/75">
@@ -199,7 +234,7 @@ export function SiteFooter() {
         </div>
       </div>
       <p className="mt-10 text-center text-xs text-cream/60">
-        © 2026 ISKCON HBR Layout Bengaluru · Hare Krishna
+        © 2026 ISKCON Bengaluru · Hare Krishna
       </p>
     </footer>
   );

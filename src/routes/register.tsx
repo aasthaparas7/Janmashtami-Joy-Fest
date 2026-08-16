@@ -45,7 +45,7 @@ export const Route = createFileRoute("/register")({
       {
         name: "description",
         content:
-          "Register for kids competitions and the group dance contest at Sri Krishna Janmashtami 2026, ISKCON HBR Layout, Horamavu Bengaluru. Deadline 2nd September 2026.",
+          "Register for kids competitions and the group dance contest at Sri Krishna Janmashtami 2026, ISKCON, Horamavu Bengaluru. Deadline 2nd September 2026.",
       },
       { property: "og:title", content: "Register | Sri Krishna Janmashtami 2026 Bengaluru" },
       {

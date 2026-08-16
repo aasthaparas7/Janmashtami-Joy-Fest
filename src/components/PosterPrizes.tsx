@@ -1,19 +1,64 @@
 import { useState } from "react";
-import { Award, BellRing, Download, FileImage, Gift, Ticket } from "lucide-react";
+import { Award, BellRing, Download, FileImage, Gift, Ticket, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { SectionTitle } from "@/components/Decor";
 import { EVENT } from "@/lib/event";
 
 const POSTER_PDF = "/janmashtami-2026-poster.pdf";
 const POSTER_PAGES = [
-  { src: "/poster/page-1.jpg", alt: "Sri Krishna Janmashtami 2026 event poster with schedule and venue" },
-  { src: "/poster/page-2.jpg", alt: "Janmashtami 2026 competitions poster with categories and prizes" },
+  { src: "/poster/Poster_1.jpg", alt: "Sri Krishna Janmashtami 2026 event poster with schedule and venue" },
+  { src: "/poster/Poster_2.jpg", alt: "Janmashtami 2026 competitions poster with categories and prizes" },
 ];
 
 /** Downloadable flyer / poster with preview of both pages. */
 export function PosterDownload() {
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const generateAndDownloadPDF = async () => {
+    try {
+      setIsGenerating(true);
+      toast.info("Generating PDF, please wait...");
+
+      const { jsPDF } = await import("jspdf");
+
+      const loadImage = (src: string): Promise<HTMLImageElement> => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.crossOrigin = "Anonymous";
+          img.onload = () => resolve(img);
+          img.onerror = reject;
+          img.src = src;
+        });
+      };
+
+      const img1 = await loadImage(POSTER_PAGES[0]!.src);
+      const pdf = new jsPDF({
+        orientation: img1.width > img1.height ? "landscape" : "portrait",
+        unit: "px",
+        format: [img1.width, img1.height]
+      });
+      pdf.addImage(img1, "PNG", 0, 0, img1.width, img1.height);
+
+      for (let i = 1; i < POSTER_PAGES.length; i++) {
+        const img = await loadImage(POSTER_PAGES[i]!.src);
+        pdf.addPage([img.width, img.height], img.width > img.height ? "landscape" : "portrait");
+        pdf.addImage(img, "PNG", 0, 0, img.width, img.height);
+      }
+
+      pdf.save("Sri-Krishna-Janmashtami-2026-Poster.pdf");
+      toast.success("PDF downloaded successfully!");
+    } catch (err) {
+      console.error("PDF Generation error:", err);
+      toast.error("Failed to generate PDF. Please try again.");
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
   return (
     <section id="poster" className="bg-background py-16">
       <div className="mx-auto max-w-5xl px-4">
@@ -24,31 +69,47 @@ export function PosterDownload() {
         />
         <div className="grid gap-5 sm:grid-cols-2">
           {POSTER_PAGES.map((p, i) => (
-            <figure key={p.src} className="lift-card gold-frame overflow-hidden rounded-3xl bg-card p-3">
-              <img
-                src={p.src}
-                alt={p.alt}
-                loading="lazy"
-                className="w-full rounded-2xl object-contain"
-              />
-              <figcaption className="mt-3 flex items-center justify-between gap-2 px-1">
-                <span className="text-xs tracking-widest text-muted-foreground uppercase">
-                  Page {i + 1}
-                </span>
-                <Button asChild variant="outlineGold" size="sm">
-                  <a href={p.src} download={`janmashtami-2026-poster-${i + 1}.jpg`}>
-                    <FileImage /> Save image
-                  </a>
-                </Button>
-              </figcaption>
+            <figure key={p.src} className="lift-card gold-frame overflow-hidden rounded-3xl bg-card p-3 h-full">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <div className="group relative cursor-zoom-in overflow-hidden rounded-2xl h-full">
+                    <img
+                      src={p.src}
+                      alt={p.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
+                    {/* Gradient overlay for text contrast */}
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-b-2xl" />
+
+                    <div className="absolute inset-x-0 bottom-6 flex justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <Button asChild variant="gold" size="sm" className="shadow-[0_4px_24px_rgba(0,0,0,0.5)] ring-2 ring-gold/40 hover:ring-gold" onClick={(e) => e.stopPropagation()}>
+                        <a href={p.src} download={`janmashtami-2026-poster-${i + 1}.png`}>
+                          <FileImage /> Save image
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl border-0 bg-transparent p-0 shadow-none [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/70 [&>button]:rounded-full outline-none">
+                  <TransformWrapper centerOnInit={true} minScale={0.5} maxScale={4} wheel={{ step: 0.1 }}>
+                    <TransformComponent wrapperClass="!w-full !h-[90vh] !flex !justify-center !items-center cursor-grab active:cursor-grabbing">
+                      <img
+                        src={p.src}
+                        alt={p.alt}
+                        className="max-h-[90vh] w-auto rounded-lg object-contain pointer-events-auto"
+                      />
+                    </TransformComponent>
+                  </TransformWrapper>
+                </DialogContent>
+              </Dialog>
             </figure>
           ))}
         </div>
         <div className="mt-7 text-center">
-          <Button asChild variant="gold" size="xl">
-            <a href={POSTER_PDF} download="Sri-Krishna-Janmashtami-2026-Poster.pdf">
-              <Download /> Download full poster (PDF)
-            </a>
+          <Button onClick={generateAndDownloadPDF} disabled={isGenerating} variant="gold" size="xl">
+            {isGenerating ? <Loader2 className="animate-spin" /> : <Download />}
+            {isGenerating ? "Generating PDF..." : "Download full poster (PDF)"}
           </Button>
         </div>
       </div>

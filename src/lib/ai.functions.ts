@@ -119,7 +119,7 @@ export const generateAdminInsights = createServerFn({ method: "POST" })
         {
           role: "system",
           content: [
-            "You advise the organising team of Sri Krishna Janmashtami 2026 (ISKCON HBR Layout, Bengaluru).",
+            "You advise the organising team of Sri Krishna Janmashtami 2026 (ISKCON, Bengaluru).",
             "You receive anonymised registration counts only. Reply in markdown with three short sections:",
             "**What the numbers say** (3 bullets), **Gaps & risks** (2 bullets), **Do this week** (3 concrete actions).",
             "Be specific about competitions, age categories and volunteer/logistics needs. Under 220 words.",

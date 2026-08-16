@@ -83,8 +83,8 @@ export function WhoWeAre() {
         <SectionTitle
           light
           eyebrow="Who we are"
-          title="ISKCON HBR Layout, Bengaluru"
-          subtitle="A community of families serving Sri Krishna in Horamavu, HBR Layout and around."
+          title="ISKCON, Bengaluru"
+          subtitle="A community of families serving Sri Krishna in Horamavu and around."
         />
 
         <div className="gold-frame rounded-3xl bg-card p-6 sm:p-8">

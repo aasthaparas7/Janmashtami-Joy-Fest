@@ -5,7 +5,7 @@ export const EVENT_END = "2026-09-05T21:00:00+05:30";
 
 const LOCATION = `${EVENT.venueName}, ${EVENT.venueAddress}`;
 const DETAILS =
-  "Sri Krishna Janmashtami 2026 organised by ISKCON HBR Layout Bengaluru. Kids competitions, group dance contest, cultural program, games, flea market, prasadam and grand kirtan.";
+  "Sri Krishna Janmashtami 2026 organised by ISKCON Bengaluru. Kids competitions, group dance contest, cultural program, games, flea market, prasadam and grand kirtan.";
 
 /** 20260905T043000Z style stamp used by ICS and Google Calendar. */
 export function toStamp(iso: string): string {
@@ -59,7 +59,7 @@ export function buildIcs(entries: CalendarEntry[]): string {
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//ISKCON HBR Layout//Janmashtami 2026//EN",
+    "PRODID:-//ISKCON//Janmashtami 2026//EN",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
   ];

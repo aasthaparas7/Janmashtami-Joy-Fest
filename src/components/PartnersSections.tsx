@@ -223,7 +223,7 @@ export function Sponsors() {
           </ul>
         </div>
 
-        <div className="gold-frame mt-6 rounded-3xl bg-secondary/40 p-6 text-center">
+        <div className="gold-frame mt-6 rounded-3xl bg-card p-6 text-center">
           <p className="flex items-center justify-center gap-2 font-display text-2xl text-primary">
             <Sparkles className="text-saffron" aria-hidden /> Let's Celebrate Together
           </p>

@@ -33,16 +33,16 @@ export function Countdown() {
       {units.map(([label, value]) => (
         <div
           key={label}
-          className="gold-frame lift-card relative overflow-hidden rounded-2xl bg-card/90 px-1 py-3 text-center backdrop-blur-sm sm:px-3 sm:py-4"
+          className="border border-gold/40 bg-white/40 backdrop-blur-xl shadow-[0_8px_32px_-12px_rgba(0,0,0,0.1)] lift-card relative overflow-hidden rounded-2xl px-1 py-3 text-center sm:px-3 sm:py-4"
         >
           <span
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent"
+            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent opacity-50"
           />
-          <div className="font-display text-2xl text-primary tabular-nums sm:text-4xl">
+          <div className="font-display text-2xl text-primary tabular-nums sm:text-4xl drop-shadow-md">
             {t ? String(value).padStart(2, "0") : "--"}
           </div>
-          <div className="mt-1 text-[10px] tracking-widest text-muted-foreground uppercase sm:text-xs">
+          <div className="mt-1 text-[10px] tracking-widest text-primary/70 uppercase sm:text-xs font-semibold">
             {label}
           </div>
         </div>

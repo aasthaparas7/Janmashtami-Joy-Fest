@@ -30,7 +30,7 @@ import { FAQS } from "@/lib/event";
 
 
 
-const TITLE = "Sri Krishna Janmashtami 2026 | ISKCON HBR Layout Bengaluru";
+const TITLE = "Sri Krishna Janmashtami 2026 | ISKCON Bengaluru";
 const DESCRIPTION =
   "Celebrate Sri Krishna Janmashtami 2026 at SLS International Gurukul, Horamavu, Bengaluru on 5th September. Enjoy kids competitions, group dance, cultural program, games, food and family celebrations.";
 
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/")({
       {
         name: "keywords",
         content:
-          "Sri Krishna Janmashtami Bengaluru, Janmashtami 2026 Bangalore, ISKCON Janmashtami Bangalore, Krishna Janmashtami Horamavu, Janmashtami competitions Bangalore, kids Janmashtami competitions Bangalore, Krishna group dance competition Bangalore, ISKCON HBR Layout Janmashtami",
+          "Sri Krishna Janmashtami Bengaluru, Janmashtami 2026 Bangalore, ISKCON Janmashtami Bangalore, Krishna Janmashtami Horamavu, Janmashtami competitions Bangalore, kids Janmashtami competitions Bangalore, Krishna group dance competition Bangalore, ISKCON Janmashtami",
       },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
@@ -63,7 +63,7 @@ export const Route = createFileRoute("/")({
           eventStatus: "https://schema.org/EventScheduled",
           eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
           description: DESCRIPTION,
-          organizer: { "@type": "Organization", name: "ISKCON HBR Layout Bengaluru" },
+          organizer: { "@type": "Organization", name: "ISKCON Bengaluru" },
           location: {
             "@type": "Place",
             name: "SLS International Gurukul",
