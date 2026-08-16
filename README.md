@@ -1,29 +1,39 @@
 # Janmashtami Joy Fest
 
-This project was built with [Lovable](https://lovable.dev).
+This project was originally built with [Lovable](https://lovable.dev) and has now been ported to **Google Antigravity**.
 
-## Build with Lovable
+## Overview
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+Janmashtami Joy Fest is a web application built using modern web technologies. With the transition to Antigravity, the project leverages advanced agentic coding for ongoing development and maintenance.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+To work on this project locally, ensure you have Node.js and npm installed. We recommend installing Node.js with [nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+
+### Getting Started
 
 ```sh
+# Clone the repository
 git clone <this-repository-url>
 cd <repository-name>
-npm i
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
 ```
 
-## Built with
+## Built With
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+- **TanStack Start**
+- **TypeScript**
+- **React**
+- **Tailwind CSS**
+
+## Porting to Antigravity
+
+This project has been migrated from Lovable to Google Antigravity. 
+- You can now use Antigravity's advanced agentic capabilities to further develop, refactor, and maintain this codebase.
+- The project is integrated with Antigravity tools, allowing for rapid iteration and seamless pair programming.
+- Note: If you still need to sync changes back to Lovable, be careful not to rewrite published git history.
