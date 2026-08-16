@@ -15,7 +15,7 @@ export function Highlights() {
           title="Program Highlights"
           subtitle="A full day of devotion, culture and family joy — from the morning competitions to the closing kirtan."
         />
-        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 [&>li:last-child:nth-child(3n+1)]:lg:col-start-2">
           {HIGHLIGHTS.map((h) => (
             <li key={h.title}>
               <article className="lift-card gold-frame group relative h-full overflow-hidden rounded-3xl bg-card p-5 pl-6">
