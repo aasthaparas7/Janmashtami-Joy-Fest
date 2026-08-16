@@ -52,7 +52,7 @@ export function Hero() {
           </h1>
           <p className="font-serif-deco mt-4 text-lg text-saffron sm:text-xl leading-relaxed">
             Celebrate the Divine Birth of Lord Krishna
-            <span className="block mt-1 text-base sm:text-lg text-primary/90 font-medium">
+            <span className="block mt-3 text-3xl sm:text-4xl text-primary font-bold drop-shadow-sm">
               @ {EVENT.venueName}
             </span>
           </p>

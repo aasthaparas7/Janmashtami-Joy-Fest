@@ -61,12 +61,19 @@ export function SiteHeader() {
         
         {/* Left side: Logo */}
         <div className="flex flex-1 justify-start">
-          <Link to="/" className="flex min-w-0 items-center gap-2 py-1">
-            <span aria-hidden className="text-xl">
-              🦚
-            </span>
-            <span className="min-w-0">
-              <span className="block truncate font-display text-base text-primary sm:text-lg">
+          <Link to="/" className="flex min-w-0 items-center gap-2 py-1 group">
+            <div className="relative w-12 h-10 sm:w-16 sm:h-12 flex-shrink-0">
+              {/* Soft ethereal glow behind the logo */}
+              <div className="absolute -top-1 left-1 w-14 h-14 sm:-top-1 sm:left-2 sm:w-20 sm:h-20 bg-white/60 blur-[12px] sm:blur-xl rounded-full z-[50]" />
+              <img 
+                src="/Logo.png" 
+                alt="Janmashtami Logo" 
+                className="absolute -top-3 left-0 w-16 max-w-none sm:-top-4 sm:w-24 transition-transform duration-300 group-hover:scale-105 z-[60]"
+                style={{ filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.3)) drop-shadow(0 0 12px rgba(255,255,255,0.6))' }}
+              />
+            </div>
+            <span className="min-w-0 ml-2 sm:ml-6">
+              <span className="block truncate font-display text-base text-primary sm:text-lg transition-colors group-hover:text-saffron">
                 Janmashtami 2026
               </span>
               <span className="block truncate text-[10px] tracking-widest text-muted-foreground uppercase">
