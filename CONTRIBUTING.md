@@ -29,7 +29,7 @@ To keep our repository organized and understandable, please adhere to the follow
 **Format:** `<category>/<short-kebab-case-description>`
 
 ### Allowed Categories (Prefixes):
-- `feature/` - New features or functionality (e.g., `feature/countdown-timer`)
+- `feature/` or `feat/` - New features or functionality (e.g., `feature/countdown-timer`)
 - `fix/` or `bugfix/` - Fixing a bug or unexpected behavior (e.g., `fix/login-validation`)
 - `hotfix/` - Critical production fixes
 - `chore/` - Routine maintenance, tooling, configurations (e.g., `chore/update-deps`)
