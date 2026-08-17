@@ -1,5 +1,14 @@
 import { useEffect, useState } from "react";
-import { Check, Crown, Handshake, HeartHandshake, Phone, Sparkles, Trophy } from "lucide-react";
+import {
+  Check,
+  Crown,
+  Handshake,
+  HeartHandshake,
+  Phone,
+  Sparkles,
+  Trophy,
+  Heart,
+} from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { SectionTitle } from "@/components/Decor";
@@ -11,6 +20,8 @@ import {
   SPONSOR_LOGO_SLOTS,
   SPONSOR_TIERS,
   SPONSOR_WHATSAPP,
+  SPONSOR_FORM_LINK,
+  DONATION_FORM_LINK,
   WINNER_CATEGORIES,
 } from "@/lib/event";
 
@@ -197,8 +208,12 @@ export function Sponsors() {
                   </li>
                 ))}
               </ul>
-              <Button asChild variant={t.featured ? "gold" : "outlineGold"} className="mt-5 h-11">
-                <a href={SPONSOR_WHATSAPP} target="_blank" rel="noreferrer">
+              <Button asChild variant="gold" className="mt-5 h-11">
+                <a
+                  href={t.tier === "Stall Partner" ? SPONSOR_FORM_LINK : SPONSOR_WHATSAPP}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Become a Sponsor
                 </a>
               </Button>
@@ -224,6 +239,74 @@ export function Sponsors() {
               </li>
             ))}
           </ul>
+        </div>
+
+        <div className="gold-frame mt-6 rounded-3xl bg-card p-6 text-center">
+          <h3 className="font-serif-deco flex items-center justify-center gap-2 text-center text-xl text-primary">
+            <Heart className="text-[#d6249f]" aria-hidden /> Support the Festival
+          </h3>
+          <p className="mx-auto mt-2 max-w-2xl text-sm text-muted-foreground">
+            Your generous donations help us organize this grand celebration. You can sponsor an
+            entire Seva or choose to donate any partial amount for the particular Sevas listed
+            below. Every contribution makes a difference!
+          </p>
+
+          <ul className="mx-auto mt-5 max-w-2xl text-left text-sm text-muted-foreground space-y-2 rounded-2xl bg-secondary/30 p-4 ring-1 ring-gold/30">
+            <li className="flex justify-between border-b border-border/50 pb-2">
+              <span>Mandap Shringar Seva</span>{" "}
+              <span className="font-semibold text-primary">Rs 80,000</span>
+            </li>
+            <li className="flex justify-between border-b border-border/50 pb-2">
+              <span>Pushpa Abhisheka Seva</span>{" "}
+              <span className="font-semibold text-primary">Rs 20,000</span>
+            </li>
+            <li className="flex justify-between border-b border-border/50 pb-2">
+              <span>Annadaan Seva</span>{" "}
+              <span className="font-semibold text-primary">Rs 80,000</span>
+            </li>
+            <li className="flex justify-between border-b border-border/50 pb-2">
+              <span>
+                Hari-Kirtan Dhwani Seva{" "}
+                <span className="hidden sm:inline">(Sound system, MIC, amplifiers)</span>
+              </span>{" "}
+              <span className="font-semibold text-primary">Rs 80,000</span>
+            </li>
+            <li className="flex justify-between border-b border-border/50 pb-2">
+              <span>
+                Jyoti Alankaran Seva <span className="hidden sm:inline">(Decoration Lights)</span>
+              </span>{" "}
+              <span className="font-semibold text-primary">Rs 60,000</span>
+            </li>
+            <li className="flex justify-between border-b border-border/50 pb-2">
+              <span>
+                Urja Seva <span className="hidden sm:inline">(Power Generator)</span>
+              </span>{" "}
+              <span className="font-semibold text-primary">Rs 20,000</span>
+            </li>
+            <li className="flex justify-between border-b border-border/50 pb-2">
+              <span>
+                Prachar Seva <span className="hidden sm:inline">(Pamphlet, Poster, Hoarding)</span>
+              </span>{" "}
+              <span className="font-semibold text-primary">Rs 60,000</span>
+            </li>
+            <li className="flex justify-between pt-1">
+              <span>
+                Pandal Seva{" "}
+                <span className="hidden sm:inline">
+                  (Tent, Tables, Chairs, Carpet, Barricades etc.)
+                </span>
+              </span>{" "}
+              <span className="font-semibold text-primary">Rs 1,00,000</span>
+            </li>
+          </ul>
+
+          <div className="mt-6 flex justify-center">
+            <Button asChild variant="gold" size="xl">
+              <a href={DONATION_FORM_LINK} target="_blank" rel="noreferrer">
+                Donate Now
+              </a>
+            </Button>
+          </div>
         </div>
 
         <div className="gold-frame mt-6 rounded-3xl bg-card p-6 text-center">

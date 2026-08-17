@@ -27,6 +27,9 @@ export const MAPS_EMBED = `https://www.google.com/maps?q=${MAPS_QUERY}&output=em
 export const WHATSAPP_LINK = `https://wa.me/${EVENT.phoneIntl}?text=${encodeURIComponent(
   "Hare Krishna! I would like to know more about Sri Krishna Janmashtami 2026 at ISKCON.",
 )}`;
+export const INSTAGRAM_LINK =
+  "https://www.instagram.com/slsinternationalgurukul?igsh=azhneG54Mmttd3h6&igsi=azhneG54Mmttd3h6";
+export const YOUTUBE_LINK = "https://www.youtube.com/@gitatoday108";
 
 export const HIGHLIGHTS = [
   {
@@ -351,6 +354,10 @@ export const WINNER_CATEGORIES: { key: string; age: string }[] = [
 export const SPONSOR_WHATSAPP = `https://wa.me/${EVENT.phoneIntl}?text=${encodeURIComponent(
   "Hare Krishna! I am interested in sponsoring / partnering for Sri Krishna Janmashtami 2026 at ISKCON.",
 )}`;
+export const SPONSOR_FORM_LINK =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeFE4L3gHRLn1OhOM-NdTooVnasxibzcgYw3JB5RI080BpBzg/viewform";
+export const DONATION_FORM_LINK =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdAa6kOF1SujAp8T2EXeRiITXQLWZsGgMV1pPUzuZNFcZSOMA/viewform";
 
 export const LAST_YEAR_STATS: { value: string; label: string }[] = [
   { value: "3,000+", label: "Devotees & guests" },
