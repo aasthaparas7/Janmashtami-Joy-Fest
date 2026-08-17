@@ -19,10 +19,7 @@ export function Highlights() {
           {HIGHLIGHTS.map((h) => (
             <li key={h.title}>
               <article className="lift-card gold-frame group relative h-full overflow-hidden rounded-3xl bg-card p-5 pl-6">
-                <span
-                  aria-hidden
-                  className="gradient-gold absolute inset-y-0 left-0 w-1.5"
-                />
+                <span aria-hidden className="gradient-gold absolute inset-y-0 left-0 w-1.5" />
                 <div className="flex items-start gap-4">
                   <span
                     aria-hidden
@@ -48,7 +45,6 @@ export function Highlights() {
     </section>
   );
 }
-
 
 export function Schedule() {
   return (
@@ -167,7 +163,10 @@ export function GroupDance() {
 
           <div className="mt-7 grid gap-4 sm:grid-cols-3">
             {prizes.map((p) => (
-              <div key={p.place} className="lift-card gold-frame rounded-2xl bg-secondary/30 p-5 text-center">
+              <div
+                key={p.place}
+                className="lift-card gold-frame rounded-2xl bg-secondary/30 p-5 text-center"
+              >
                 <div className="text-3xl">{p.icon}</div>
                 <p className="font-serif-deco mt-1 text-lg text-primary">{p.place}</p>
                 <p className="text-sm font-semibold text-saffron">{p.value}</p>

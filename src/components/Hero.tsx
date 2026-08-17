@@ -18,8 +18,8 @@ function Chip({ icon, children }: { icon: React.ReactNode; children: React.React
 
 export function Hero() {
   return (
-    <section 
-      id="home" 
+    <section
+      id="home"
       className="relative overflow-hidden pt-24 pb-16 sm:pt-28 bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
@@ -93,7 +93,7 @@ export function Hero() {
             <Chip icon={<Clock className="size-4" />}>{EVENT.timeLabel}</Chip>
           </div>
 
-          <a 
+          <a
             href="#venue"
             className="group mt-6 block mx-auto max-w-md rounded-2xl border border-gold/30 bg-card/40 p-4 backdrop-blur-sm shadow-soft transition-all hover:scale-[1.02] hover:bg-card/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
           >
@@ -102,8 +102,12 @@ export function Hero() {
                 <MapPin className="size-6 transition-transform group-hover:scale-110" />
               </div>
               <div>
-                <p className="font-serif-deco text-lg font-bold text-primary transition-colors group-hover:text-gold-deep">{EVENT.venueName}</p>
-                <p className="text-sm text-muted-foreground leading-snug mt-0.5">{EVENT.venueAddress}</p>
+                <p className="font-serif-deco text-lg font-bold text-primary transition-colors group-hover:text-gold-deep">
+                  {EVENT.venueName}
+                </p>
+                <p className="text-sm text-muted-foreground leading-snug mt-0.5">
+                  {EVENT.venueAddress}
+                </p>
               </div>
             </div>
           </a>

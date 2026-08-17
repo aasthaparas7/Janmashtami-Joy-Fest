@@ -38,7 +38,8 @@ npm run dev
 
 ## Porting to Antigravity
 
-This project has been migrated from Lovable to Google Antigravity. 
+This project has been migrated from Lovable to Google Antigravity.
+
 - You can now use Antigravity's advanced agentic capabilities to further develop, refactor, and maintain this codebase.
 - The project is integrated with Antigravity tools, allowing for rapid iteration and seamless pair programming.
 - Note: If you still need to sync changes back to Lovable, be careful not to rewrite published git history.
@@ -50,4 +51,4 @@ We welcome contributions! To ensure a smooth workflow, please review our communi
 - [**Contributing Guidelines**](CONTRIBUTING.md): Includes our required branch naming conventions, step-by-step developer workflow, and PR process.
 - [**Code of Conduct**](CODE_OF_CONDUCT.md): Ensures a welcoming and safe environment for all contributors.
 
-*Note: All Pull Requests are automatically validated by our CI checks for linting, formatting, and successful builds before they can be merged.*
+_Note: All Pull Requests are automatically validated by our CI checks for linting, formatting, and successful builds before they can be merged._

@@ -95,18 +95,18 @@ export function PeacockFluteParallax() {
 
       <div className="relative mx-auto max-w-3xl px-4 text-center">
         <div className="rounded-[2rem] bg-primary/75 px-5 py-8 ring-1 ring-gold/40 backdrop-blur-sm sm:px-10">
-        <p className="text-[11px] font-semibold tracking-[0.35em] text-gold uppercase">
-          The call of the flute
-        </p>
-        <h2 className="mt-4 text-3xl leading-tight text-cream sm:text-5xl">
-          Wherever the flute is heard,
-          <span className="text-gold-shimmer block">hearts begin to dance</span>
-        </h2>
-        <div className="ornate-rule mx-auto mt-6 w-48" />
-        <p className="mt-6 text-sm text-cream sm:text-base">
-          Peacock feathers, butter pots and Vrindavan melodies — a full day of Krishna consciousness
-          for every family.
-        </p>
+          <p className="text-[11px] font-semibold tracking-[0.35em] text-gold uppercase">
+            The call of the flute
+          </p>
+          <h2 className="mt-4 text-3xl leading-tight text-cream sm:text-5xl">
+            Wherever the flute is heard,
+            <span className="text-gold-shimmer block">hearts begin to dance</span>
+          </h2>
+          <div className="ornate-rule mx-auto mt-6 w-48" />
+          <p className="mt-6 text-sm text-cream sm:text-base">
+            Peacock feathers, butter pots and Vrindavan melodies — a full day of Krishna
+            consciousness for every family.
+          </p>
         </div>
       </div>
     </section>

@@ -13,7 +13,6 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
 
-
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -91,11 +90,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#f5c542" },
       { property: "og:title", content: "Sri Krishna Janmashtami 2026 | SLS International Gurukul" },
-      { name: "twitter:title", content: "Sri Krishna Janmashtami 2026 | SLS International Gurukul" },
-      { property: "og:description", content: "Celebrate Sri Krishna Janmashtami 2026 at SLS International Gurukul, Horamavu, Bengaluru on 5th September." },
-      { name: "twitter:description", content: "Celebrate Sri Krishna Janmashtami 2026 at SLS International Gurukul, Horamavu, Bengaluru on 5th September." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/776005d0-bfe4-4dd9-95d6-8e4f9dca8802" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/776005d0-bfe4-4dd9-95d6-8e4f9dca8802" },
+      {
+        name: "twitter:title",
+        content: "Sri Krishna Janmashtami 2026 | SLS International Gurukul",
+      },
+      {
+        property: "og:description",
+        content:
+          "Celebrate Sri Krishna Janmashtami 2026 at SLS International Gurukul, Horamavu, Bengaluru on 5th September.",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Celebrate Sri Krishna Janmashtami 2026 at SLS International Gurukul, Horamavu, Bengaluru on 5th September.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/776005d0-bfe4-4dd9-95d6-8e4f9dca8802",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/776005d0-bfe4-4dd9-95d6-8e4f9dca8802",
+      },
     ],
     links: [
       {
@@ -118,7 +136,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
-
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
@@ -133,7 +150,6 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
-
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
@@ -145,4 +161,3 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
-

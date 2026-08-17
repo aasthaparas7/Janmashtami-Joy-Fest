@@ -50,26 +50,28 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header 
+    <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? "border-b border-gold/30 bg-background/95 backdrop-blur-md shadow-sm" 
+        scrolled
+          ? "border-b border-gold/30 bg-background/95 backdrop-blur-md shadow-sm"
           : "border-b border-transparent bg-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5">
-        
         {/* Left side: Logo */}
         <div className="flex flex-1 justify-start">
           <Link to="/" className="flex min-w-0 items-center gap-2 py-1 group">
             <div className="relative w-12 h-10 sm:w-16 sm:h-12 flex-shrink-0">
               {/* Soft ethereal glow behind the logo */}
               <div className="absolute -top-1 left-1 w-14 h-14 sm:-top-1 sm:left-2 sm:w-20 sm:h-20 bg-white/60 blur-[12px] sm:blur-xl rounded-full z-[50]" />
-              <img 
-                src="/Logo.png" 
-                alt="Janmashtami Logo" 
+              <img
+                src="/Logo.png"
+                alt="Janmashtami Logo"
                 className="absolute -top-3 left-0 w-16 max-w-none sm:-top-4 sm:w-24 transition-transform duration-300 group-hover:scale-105 z-[60]"
-                style={{ filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.3)) drop-shadow(0 0 12px rgba(255,255,255,0.6))' }}
+                style={{
+                  filter:
+                    "drop-shadow(0 4px 6px rgba(0,0,0,0.3)) drop-shadow(0 0 12px rgba(255,255,255,0.6))",
+                }}
               />
             </div>
             <span className="min-w-0 ml-2 sm:ml-6">
@@ -106,19 +108,22 @@ export function SiteHeader() {
             <Link to="/register">Register Now</Link>
           </Button>
         </div>
-
       </div>
     </header>
   );
 }
-
 
 function MobileMenu() {
   const [open, setOpen] = useState(false);
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="outlineGold" size="icon" className="size-11 lg:hidden" aria-label="Open menu">
+        <Button
+          variant="outlineGold"
+          size="icon"
+          className="size-11 lg:hidden"
+          aria-label="Open menu"
+        >
           <Menu aria-hidden />
         </Button>
       </SheetTrigger>
@@ -206,7 +211,9 @@ export function SiteFooter() {
           <p className="text-sm text-cream/75">
             {EVENT.venueName}, {EVENT.venueAddress}
           </p>
-          <p className="mt-3 text-sm text-cream/75">Contact: {EVENT.phone} · {EVENT.phoneAlt}</p>
+          <p className="mt-3 text-sm text-cream/75">
+            Contact: {EVENT.phone} · {EVENT.phoneAlt}
+          </p>
         </div>
         <div>
           <h4 className="font-serif-deco text-lg text-gold">Quick Links</h4>

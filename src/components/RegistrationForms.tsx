@@ -326,7 +326,6 @@ function Success({ id, onReset }: { id: string; onReset: () => void }) {
   );
 }
 
-
 const KIDS_STEPS = ["Contact", "Child", "Competitions", "Review"];
 
 export function KidsForm() {
@@ -439,8 +438,6 @@ export function KidsForm() {
       steps={KIDS_STEPS}
       current={step}
     >
-
-
       {step === 0 ? (
         <div className="grid gap-4 sm:grid-cols-2">
           <Field label="Parent/Guardian Name" error={errors["parent_name"]}>
@@ -619,10 +616,10 @@ export function KidsForm() {
         submitLabel="Submit Registration"
       />
       <p className="text-center text-xs text-muted-foreground">
-        Registration fee of ₹150 per competition to be paid on the spot. Deadline: 2nd September 2026.
+        Registration fee of ₹150 per competition to be paid on the spot. Deadline: 2nd September
+        2026.
       </p>
     </WizardShell>
-
   );
 }
 
@@ -722,8 +719,6 @@ export function DanceForm() {
       steps={DANCE_STEPS}
       current={step}
     >
-
-
       {step === 0 ? (
         <div className="grid gap-4 sm:grid-cols-2">
           <Field label="Team Name" error={errors["team_name"]}>
@@ -880,6 +875,5 @@ export function DanceForm() {
         Theme must be based on Lord Krishna. Deadline: 2nd September 2026.
       </p>
     </WizardShell>
-
   );
 }

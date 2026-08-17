@@ -12,11 +12,7 @@ import {
   WhatsAppSection,
 } from "@/components/InfoSections";
 import { ChiefGuest, Sponsors } from "@/components/PartnersSections";
-import {
-  PosterDownload,
-  PrizesAndBadges,
-  WhatsAppReminder,
-} from "@/components/PosterPrizes";
+import { PosterDownload, PrizesAndBadges, WhatsAppReminder } from "@/components/PosterPrizes";
 import { FestivalAssistant } from "@/components/FestivalAssistant";
 import { PeacockFluteParallax } from "@/components/PeacockFluteParallax";
 import {
@@ -27,8 +23,6 @@ import {
   StickyCta,
 } from "@/components/SiteChrome";
 import { FAQS } from "@/lib/event";
-
-
 
 const TITLE = "Sri Krishna Janmashtami 2026 | ISKCON Bengaluru";
 const DESCRIPTION =
@@ -90,7 +84,6 @@ export const Route = createFileRoute("/")({
         }),
       },
     ],
-
   }),
   component: Index,
 });
@@ -128,4 +121,3 @@ function Index() {
     </div>
   );
 }
-

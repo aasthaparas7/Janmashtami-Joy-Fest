@@ -26,7 +26,10 @@ export function ChiefGuest() {
         />
         <div className="grid gap-5 sm:grid-cols-2">
           {CHIEF_GUESTS.map((g) => (
-            <article key={g.role} className="lift-card gold-frame rounded-3xl bg-card p-6 text-center">
+            <article
+              key={g.role}
+              className="lift-card gold-frame rounded-3xl bg-card p-6 text-center"
+            >
               <span
                 aria-hidden
                 className="mx-auto grid size-16 place-items-center rounded-full bg-secondary/40 ring-1 ring-gold/40"
@@ -229,8 +232,8 @@ export function Sponsors() {
           </p>
           <p className="mx-auto mt-2 max-w-2xl text-sm text-muted-foreground">
             Interested in a custom partnership? Reach out and our team will share the complete
-            sponsorship details. Sponsorship supports prasadam distribution, prizes for
-            children and the cultural program.
+            sponsorship details. Sponsorship supports prasadam distribution, prizes for children and
+            the cultural program.
           </p>
           <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
             <Button asChild variant="gold" size="xl">

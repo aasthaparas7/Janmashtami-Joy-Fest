@@ -106,7 +106,6 @@ export function WhatsAppSection() {
   );
 }
 
-
 export function GeneralInstructions() {
   return (
     <section id="instructions" className="bg-background py-14">
@@ -218,7 +217,6 @@ export function Gallery() {
 
       <Dialog open={open !== null} onOpenChange={(o) => !o && setOpen(null)}>
         <DialogContent className="max-w-3xl border-0 bg-transparent p-0 shadow-none">
-
           <DialogTitle className="sr-only">{active?.caption ?? "Gallery photo"}</DialogTitle>
           {active && (
             <figure className="gold-frame overflow-hidden rounded-3xl bg-card">
@@ -231,7 +229,9 @@ export function Gallery() {
           <div className="mt-3 flex justify-center gap-2">
             <Button
               variant="outlineGold"
-              onClick={() => setOpen((i) => (i === null ? i : (i + GALLERY.length - 1) % GALLERY.length))}
+              onClick={() =>
+                setOpen((i) => (i === null ? i : (i + GALLERY.length - 1) % GALLERY.length))
+              }
             >
               Previous
             </Button>
@@ -334,10 +334,11 @@ export function Venue() {
                   key={m.key}
                   type="button"
                   onClick={() => setMode(m.key)}
-                  className={`rounded-full border px-4 py-1.5 text-xs font-semibold transition-colors ${mode === m.key
+                  className={`rounded-full border px-4 py-1.5 text-xs font-semibold transition-colors ${
+                    mode === m.key
                       ? "border-transparent bg-saffron text-primary-foreground"
                       : "border-border text-muted-foreground hover:text-primary"
-                    }`}
+                  }`}
                 >
                   {m.label}
                 </button>
@@ -379,7 +380,6 @@ export function Venue() {
     </section>
   );
 }
-
 
 export function Contact() {
   return (
@@ -444,17 +444,26 @@ export function SocialShare() {
         <SectionTitle eyebrow="Spread the joy" title="Follow & Share the Celebration" />
         <div className="gold-frame rounded-3xl bg-secondary/25 p-6 text-center">
           <div className="flex flex-wrap justify-center gap-4">
-            <Button asChild className="bg-gradient-to-tr from-[#fd5949] to-[#d6249f] hover:opacity-90 text-white font-semibold transition-all hover:-translate-y-0.5 shadow-sm border-0">
+            <Button
+              asChild
+              className="bg-gradient-to-tr from-[#fd5949] to-[#d6249f] hover:opacity-90 text-white font-semibold transition-all hover:-translate-y-0.5 shadow-sm border-0"
+            >
               <a href="https://instagram.com/iskconbangalore" target="_blank" rel="noreferrer">
                 <Instagram className="size-4 mr-2" /> Instagram
               </a>
             </Button>
-            <Button asChild className="bg-[#1877F2] hover:bg-[#1877F2]/90 text-white font-semibold transition-all hover:-translate-y-0.5 shadow-sm border-0">
+            <Button
+              asChild
+              className="bg-[#1877F2] hover:bg-[#1877F2]/90 text-white font-semibold transition-all hover:-translate-y-0.5 shadow-sm border-0"
+            >
               <a href="https://facebook.com/iskconbangalore" target="_blank" rel="noreferrer">
                 <Facebook className="size-4 mr-2" /> Facebook
               </a>
             </Button>
-            <Button asChild className="bg-[#25D366] hover:bg-[#25D366]/90 text-white font-semibold transition-all hover:-translate-y-0.5 shadow-sm border-0">
+            <Button
+              asChild
+              className="bg-[#25D366] hover:bg-[#25D366]/90 text-white font-semibold transition-all hover:-translate-y-0.5 shadow-sm border-0"
+            >
               <a
                 href={`https://wa.me/?text=${encodeURIComponent(`${SHARE_TEXT} ${url}`)}`}
                 target="_blank"
@@ -463,7 +472,11 @@ export function SocialShare() {
                 <MessageCircle className="size-4 mr-2" /> WhatsApp
               </a>
             </Button>
-            <Button variant="gold" onClick={copy} className="font-semibold transition-all hover:-translate-y-0.5 shadow-sm">
+            <Button
+              variant="gold"
+              onClick={copy}
+              className="font-semibold transition-all hover:-translate-y-0.5 shadow-sm"
+            >
               <Copy className="size-4 mr-2" /> Copy Link
             </Button>
           </div>
