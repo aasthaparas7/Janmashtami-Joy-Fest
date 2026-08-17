@@ -16,7 +16,7 @@ import { PosterDownload, PrizesAndBadges, WhatsAppReminder } from "@/components/
 import { FestivalAssistant } from "@/components/FestivalAssistant";
 import { PeacockFluteParallax } from "@/components/PeacockFluteParallax";
 import {
-  FloatingWhatsApp,
+  FloatingSocials,
   SiteFooter,
   SiteHeader,
   SkipLink,
@@ -115,7 +115,7 @@ function Index() {
         <WhatsAppSection />
         <SocialShare />
       </main>
-      <FloatingWhatsApp />
+      <FloatingSocials />
       <StickyCta />
       <SiteFooter />
     </div>

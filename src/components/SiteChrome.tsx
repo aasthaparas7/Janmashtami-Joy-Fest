@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, MessageCircle, Phone } from "lucide-react";
+import { Menu, MessageCircle, Phone, Youtube, Instagram, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -10,7 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { EVENT, WHATSAPP_LINK } from "@/lib/event";
+import { EVENT, WHATSAPP_LINK, SPONSOR_WHATSAPP, INSTAGRAM_LINK, YOUTUBE_LINK } from "@/lib/event";
 
 const NAV = [
   { label: "Home", href: "/#home" },
@@ -169,17 +169,44 @@ function MobileMenu() {
   );
 }
 
-export function FloatingWhatsApp() {
+export function FloatingSocials() {
   return (
-    <a
-      href={WHATSAPP_LINK}
-      target="_blank"
-      rel="noreferrer"
-      aria-label="Chat with us on WhatsApp"
-      className="fixed right-4 bottom-24 z-50 grid size-14 place-items-center rounded-full bg-leaf text-primary-foreground shadow-gold transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none sm:bottom-8"
-    >
-      <MessageCircle className="size-6" aria-hidden />
-    </a>
+    <div className="fixed right-4 bottom-24 z-50 flex flex-col gap-3 sm:bottom-8">
+      <a
+        href="/#assistant"
+        aria-label="Ask the Festival Assistant"
+        className="grid size-12 place-items-center rounded-full bg-primary text-primary-foreground shadow-gold transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none self-end"
+      >
+        <Bot className="size-5" aria-hidden />
+      </a>
+      <a
+        href={YOUTUBE_LINK}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Visit our YouTube channel"
+        className="grid size-12 place-items-center rounded-full bg-[#FF0000] text-primary-foreground shadow-gold transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none self-end"
+      >
+        <Youtube className="size-5" aria-hidden />
+      </a>
+      <a
+        href={INSTAGRAM_LINK}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Follow us on Instagram"
+        className="grid size-12 place-items-center rounded-full bg-gradient-to-tr from-[#fd5949] to-[#d6249f] text-primary-foreground shadow-gold transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none self-end"
+      >
+        <Instagram className="size-5" aria-hidden />
+      </a>
+      <a
+        href={SPONSOR_WHATSAPP}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Chat with us on WhatsApp"
+        className="grid size-14 place-items-center rounded-full bg-leaf text-primary-foreground shadow-gold transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none self-end"
+      >
+        <MessageCircle className="size-6" aria-hidden />
+      </a>
+    </div>
   );
 }
 
