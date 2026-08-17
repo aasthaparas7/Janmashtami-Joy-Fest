@@ -1,0 +1,43 @@
+name: PR Quality Checks
+
+# Trigger the workflow on every pull request targeting any branch
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  validate-pr:
+    name: Lint, Format, Test, and Build
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Pull the code from the PR branch into the runner environment
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Install Node.js on the runner environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Replace with your project's Node version
+          cache: 'npm'       # Caches npm dependencies for faster execution
+
+      # Step 3: Install a clean slate of dependencies using package-lock.json
+      - name: Install Dependencies
+        run: npm ci
+
+      # Step 4: Validate code syntax and guidelines
+      - name: Run Linter
+        run: npm run lint
+
+      # Step 5: Check code formatting consistency
+      - name: Check Formatting
+        run: npm run format
+
+      # # Step 6: Execute unit tests
+      # - name: Run Automated Tests
+      #   run: npm test # Standard test command (or replace with: npm run test)
+
+      # Step 7: Verify project compilation/bundling
+      - name: Run Automated Build
+        run: npm run build
