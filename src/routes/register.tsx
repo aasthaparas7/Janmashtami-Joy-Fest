@@ -4,7 +4,7 @@ import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SectionTitle } from "@/components/Decor";
-import { FloatingWhatsApp, SiteFooter, SiteHeader, SkipLink } from "@/components/SiteChrome";
+import { FloatingSocials, SiteFooter, SiteHeader, SkipLink } from "@/components/SiteChrome";
 import { GeneralInstructions } from "@/components/InfoSections";
 import { IdeaStudio } from "@/components/IdeaStudio";
 import { GreetingCardMaker } from "@/components/GreetingCardMaker";
@@ -94,7 +94,7 @@ function RegisterPage() {
       <GeneralInstructions />
       <IdeaStudio />
       <GreetingCardMaker />
-      <FloatingWhatsApp />
+      <FloatingSocials />
       <SiteFooter />
     </div>
   );

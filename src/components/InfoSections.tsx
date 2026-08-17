@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import {
   Copy,
   Download,
-  Facebook,
+  Youtube,
   Instagram,
   Mail,
   MapPin,
@@ -30,6 +30,9 @@ import {
   MAPS_EMBED,
   MAPS_QUERY,
   WHATSAPP_LINK,
+  INSTAGRAM_LINK,
+  YOUTUBE_LINK,
+  SPONSOR_WHATSAPP,
 } from "@/lib/event";
 
 import galleryDance from "@/assets/gallery-dance.jpg";
@@ -448,27 +451,23 @@ export function SocialShare() {
               asChild
               className="bg-gradient-to-tr from-[#fd5949] to-[#d6249f] hover:opacity-90 text-white font-semibold transition-all hover:-translate-y-0.5 shadow-sm border-0"
             >
-              <a href="https://instagram.com/iskconbangalore" target="_blank" rel="noreferrer">
+              <a href={INSTAGRAM_LINK} target="_blank" rel="noreferrer">
                 <Instagram className="size-4 mr-2" /> Instagram
               </a>
             </Button>
             <Button
               asChild
-              className="bg-[#1877F2] hover:bg-[#1877F2]/90 text-white font-semibold transition-all hover:-translate-y-0.5 shadow-sm border-0"
+              className="bg-[#FF0000] hover:bg-[#FF0000]/90 text-white font-semibold transition-all hover:-translate-y-0.5 shadow-sm border-0"
             >
-              <a href="https://facebook.com/iskconbangalore" target="_blank" rel="noreferrer">
-                <Facebook className="size-4 mr-2" /> Facebook
+              <a href={YOUTUBE_LINK} target="_blank" rel="noreferrer">
+                <Youtube className="size-4 mr-2" /> YouTube
               </a>
             </Button>
             <Button
               asChild
               className="bg-[#25D366] hover:bg-[#25D366]/90 text-white font-semibold transition-all hover:-translate-y-0.5 shadow-sm border-0"
             >
-              <a
-                href={`https://wa.me/?text=${encodeURIComponent(`${SHARE_TEXT} ${url}`)}`}
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href={SPONSOR_WHATSAPP} target="_blank" rel="noreferrer">
                 <MessageCircle className="size-4 mr-2" /> WhatsApp
               </a>
             </Button>
