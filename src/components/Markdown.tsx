@@ -42,15 +42,18 @@ export function Markdown({ text }: { text: string }) {
 }
 
 function inline(text: string): React.ReactNode[] {
-  return text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).filter(Boolean).map((part, i) => {
-    if (part.startsWith("**") && part.endsWith("**"))
-      return (
-        <strong key={i} className="font-semibold text-primary">
-          {part.slice(2, -2)}
-        </strong>
-      );
-    if (part.startsWith("*") && part.endsWith("*") && part.length > 2)
-      return <em key={i}>{part.slice(1, -1)}</em>;
-    return <span key={i}>{part}</span>;
-  });
+  return text
+    .split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g)
+    .filter(Boolean)
+    .map((part, i) => {
+      if (part.startsWith("**") && part.endsWith("**"))
+        return (
+          <strong key={i} className="font-semibold text-primary">
+            {part.slice(2, -2)}
+          </strong>
+        );
+      if (part.startsWith("*") && part.endsWith("*") && part.length > 2)
+        return <em key={i}>{part.slice(1, -1)}</em>;
+      return <span key={i}>{part}</span>;
+    });
 }

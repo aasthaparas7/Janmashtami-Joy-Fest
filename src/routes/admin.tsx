@@ -201,7 +201,8 @@ function AdminPage() {
   const filteredKids = useMemo(
     () =>
       kids.filter((k) => {
-        const hay = `${k.registration_id} ${k.child_name} ${k.parent_name} ${k.mobile} ${k.email} ${k.school_name ?? ""}`.toLowerCase();
+        const hay =
+          `${k.registration_id} ${k.child_name} ${k.parent_name} ${k.mobile} ${k.email} ${k.school_name ?? ""}`.toLowerCase();
         return (
           hay.includes(q.toLowerCase()) &&
           (cat === "all" || k.category === cat) &&
@@ -221,7 +222,11 @@ function AdminPage() {
     [teams, q],
   );
 
-  const setStatus = async (table: "kids_registrations" | "dance_registrations", id: string, status: string) => {
+  const setStatus = async (
+    table: "kids_registrations" | "dance_registrations",
+    id: string,
+    status: string,
+  ) => {
     const { error } = await supabase.from(table).update({ status }).eq("id", id);
     if (error) {
       toast.error("Could not update status");
@@ -269,7 +274,12 @@ function AdminPage() {
             <p className="text-xs text-muted-foreground">Sri Krishna Janmashtami 2026</p>
           </div>
           <div className="flex shrink-0 gap-2">
-            <Button variant="outlineGold" size="icon" onClick={() => void load()} aria-label="Refresh">
+            <Button
+              variant="outlineGold"
+              size="icon"
+              onClick={() => void load()}
+              aria-label="Refresh"
+            >
               <RefreshCw />
             </Button>
             <Button
@@ -290,7 +300,10 @@ function AdminPage() {
           <Stat label="Total Registrations" value={kids.length + teams.length} />
           <Stat label="Balgopal" value={kids.filter((k) => k.category === "Balgopal").length} />
           <Stat label="Nandgopal" value={kids.filter((k) => k.category === "Nandgopal").length} />
-          <Stat label="Nandkishore" value={kids.filter((k) => k.category === "Nandkishore").length} />
+          <Stat
+            label="Nandkishore"
+            value={kids.filter((k) => k.category === "Nandkishore").length}
+          />
           <Stat label="Group Dance Teams" value={teams.length} />
           <Stat label="Total Participants" value={totalParticipants} />
         </div>
@@ -340,13 +353,9 @@ function AdminPage() {
             <SponsorsAdmin />
           </TabsContent>
 
-
           <TabsContent value="kids">
             <div className="mb-3 flex justify-end">
-              <Button
-                variant="gold"
-                onClick={() => toCsv(filteredKids, "kids-registrations.csv")}
-              >
+              <Button variant="gold" onClick={() => toCsv(filteredKids, "kids-registrations.csv")}>
                 <Download /> Export CSV
               </Button>
             </div>
@@ -354,13 +363,21 @@ function AdminPage() {
               <table className="w-full min-w-[900px] text-sm">
                 <thead className="bg-muted text-left">
                   <tr>
-                    {["Reg ID", "Child", "Age", "Category", "Competitions", "Parent", "Contact", "Status", ""].map(
-                      (h) => (
-                        <th key={h} className="p-3 font-semibold text-primary">
-                          {h}
-                        </th>
-                      ),
-                    )}
+                    {[
+                      "Reg ID",
+                      "Child",
+                      "Age",
+                      "Category",
+                      "Competitions",
+                      "Parent",
+                      "Contact",
+                      "Status",
+                      "",
+                    ].map((h) => (
+                      <th key={h} className="p-3 font-semibold text-primary">
+                        {h}
+                      </th>
+                    ))}
                   </tr>
                 </thead>
                 <tbody>
@@ -375,7 +392,12 @@ function AdminPage() {
                       </td>
                       <td className="p-3">{k.parent_name}</td>
                       <td className="p-3 text-xs">
-                        <a className="text-leaf" href={`https://wa.me/91${k.mobile.replace(/\D/g, "").slice(-10)}`} target="_blank" rel="noreferrer">
+                        <a
+                          className="text-leaf"
+                          href={`https://wa.me/91${k.mobile.replace(/\D/g, "").slice(-10)}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
                           {k.mobile}
                         </a>
                         <br />
@@ -403,7 +425,9 @@ function AdminPage() {
                 </tbody>
               </table>
               {!filteredKids.length ? (
-                <p className="p-6 text-center text-sm text-muted-foreground">No registrations yet.</p>
+                <p className="p-6 text-center text-sm text-muted-foreground">
+                  No registrations yet.
+                </p>
               ) : null}
             </div>
           </TabsContent>
@@ -423,7 +447,16 @@ function AdminPage() {
               <table className="w-full min-w-[900px] text-sm">
                 <thead className="bg-muted text-left">
                   <tr>
-                    {["Reg ID", "Team", "Leader", "Members", "Style", "Song", "Contact", "Status"].map((h) => (
+                    {[
+                      "Reg ID",
+                      "Team",
+                      "Leader",
+                      "Members",
+                      "Style",
+                      "Song",
+                      "Contact",
+                      "Status",
+                    ].map((h) => (
                       <th key={h} className="p-3 font-semibold text-primary">
                         {h}
                       </th>

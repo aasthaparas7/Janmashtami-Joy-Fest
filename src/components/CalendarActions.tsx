@@ -14,10 +14,26 @@ const STORAGE_KEY = "kj2026-reminders";
 const MAX_TIMEOUT = 2_147_000_000;
 
 const MILESTONES = [
-  { ms: 30 * 86400000, label: "30 days to go", body: "One month until Sri Krishna Janmashtami 2026!" },
-  { ms: 7 * 86400000, label: "1 week to go", body: "Janmashtami 2026 is one week away. Register before 2nd September." },
-  { ms: 86400000, label: "Tomorrow", body: "Janmashtami 2026 is tomorrow at SLS International Gurukul, Horamavu." },
-  { ms: 2 * 3600000, label: "2 hours to go", body: "The celebration begins in 2 hours. Reach the venue 30 minutes early." },
+  {
+    ms: 30 * 86400000,
+    label: "30 days to go",
+    body: "One month until Sri Krishna Janmashtami 2026!",
+  },
+  {
+    ms: 7 * 86400000,
+    label: "1 week to go",
+    body: "Janmashtami 2026 is one week away. Register before 2nd September.",
+  },
+  {
+    ms: 86400000,
+    label: "Tomorrow",
+    body: "Janmashtami 2026 is tomorrow at SLS International Gurukul, Horamavu.",
+  },
+  {
+    ms: 2 * 3600000,
+    label: "2 hours to go",
+    body: "The celebration begins in 2 hours. Reach the venue 30 minutes early.",
+  },
   { ms: 0, label: "Happening now", body: "Hare Krishna! Sri Krishna Janmashtami 2026 has begun." },
 ];
 
@@ -54,7 +70,8 @@ export function CalendarActions() {
     }
     if (typeof Notification === "undefined") {
       toast.error("This browser does not support notifications", {
-        description: "Add the event to your calendar instead — it includes 1 day and 2 hour alerts.",
+        description:
+          "Add the event to your calendar instead — it includes 1 day and 2 hour alerts.",
       });
       return;
     }

@@ -9,7 +9,10 @@ const DETAILS =
 
 /** 20260905T043000Z style stamp used by ICS and Google Calendar. */
 export function toStamp(iso: string): string {
-  return new Date(iso).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+  return new Date(iso)
+    .toISOString()
+    .replace(/[-:]/g, "")
+    .replace(/\.\d{3}/, "");
 }
 
 export type CalendarEntry = {

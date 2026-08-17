@@ -10,8 +10,14 @@ import { EVENT } from "@/lib/event";
 
 const POSTER_PDF = "/janmashtami-2026-poster.pdf";
 const POSTER_PAGES = [
-  { src: "/poster/Poster_1.jpg", alt: "Sri Krishna Janmashtami 2026 event poster with schedule and venue" },
-  { src: "/poster/Poster_2.jpg", alt: "Janmashtami 2026 competitions poster with categories and prizes" },
+  {
+    src: "/poster/Poster_1.jpg",
+    alt: "Sri Krishna Janmashtami 2026 event poster with schedule and venue",
+  },
+  {
+    src: "/poster/Poster_2.jpg",
+    alt: "Janmashtami 2026 competitions poster with categories and prizes",
+  },
 ];
 
 /** Downloadable flyer / poster with preview of both pages. */
@@ -50,7 +56,7 @@ export function PosterDownload() {
       const pdf = new jsPDF({
         orientation: img1.width > img1.height ? "landscape" : "portrait",
         unit: "px",
-        format: [img1.width, img1.height]
+        format: [img1.width, img1.height],
       });
       pdf.addImage(getBase64Image(img1), "JPEG", 0, 0, img1.width, img1.height);
 
@@ -81,7 +87,10 @@ export function PosterDownload() {
         />
         <div className="grid gap-5 sm:grid-cols-2">
           {POSTER_PAGES.map((p, i) => (
-            <figure key={p.src} className="lift-card gold-frame overflow-hidden rounded-3xl bg-card p-3 h-full">
+            <figure
+              key={p.src}
+              className="lift-card gold-frame overflow-hidden rounded-3xl bg-card p-3 h-full"
+            >
               <Dialog>
                 <DialogTrigger asChild>
                   <div className="group relative cursor-zoom-in overflow-hidden rounded-2xl h-full">
@@ -95,7 +104,13 @@ export function PosterDownload() {
                     <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-b-2xl" />
 
                     <div className="absolute inset-x-0 bottom-6 flex justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      <Button asChild variant="gold" size="sm" className="shadow-[0_4px_24px_rgba(0,0,0,0.5)] ring-2 ring-gold/40 hover:ring-gold" onClick={(e) => e.stopPropagation()}>
+                      <Button
+                        asChild
+                        variant="gold"
+                        size="sm"
+                        className="shadow-[0_4px_24px_rgba(0,0,0,0.5)] ring-2 ring-gold/40 hover:ring-gold"
+                        onClick={(e) => e.stopPropagation()}
+                      >
                         <a href={p.src} download={`janmashtami-2026-poster-${i + 1}.png`}>
                           <FileImage /> Save image
                         </a>
@@ -104,7 +119,12 @@ export function PosterDownload() {
                   </div>
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl border-0 bg-transparent p-0 shadow-none [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/70 [&>button]:rounded-full outline-none">
-                  <TransformWrapper centerOnInit={true} minScale={0.5} maxScale={4} wheel={{ step: 0.1 }}>
+                  <TransformWrapper
+                    centerOnInit={true}
+                    minScale={0.5}
+                    maxScale={4}
+                    wheel={{ step: 0.1 }}
+                  >
                     <TransformComponent wrapperClass="!w-full !h-[90vh] !flex !justify-center !items-center cursor-grab active:cursor-grabbing">
                       <img
                         src={p.src}
@@ -130,9 +150,21 @@ export function PosterDownload() {
 }
 
 const PRIZE_ROWS = [
-  { key: "Balgopal", age: "Up to 5 Years", detail: "Cash prizes, trophies & exciting gifts for winners in each competition" },
-  { key: "Nandgopal", age: "6 – 11 Years", detail: "Cash prizes, trophies & exciting gifts for winners in each competition" },
-  { key: "Nandkishore", age: "12 Years & Above", detail: "Cash prizes, trophies & exciting gifts for winners in each competition" },
+  {
+    key: "Balgopal",
+    age: "Up to 5 Years",
+    detail: "Cash prizes, trophies & exciting gifts for winners in each competition",
+  },
+  {
+    key: "Nandgopal",
+    age: "6 – 11 Years",
+    detail: "Cash prizes, trophies & exciting gifts for winners in each competition",
+  },
+  {
+    key: "Nandkishore",
+    age: "12 Years & Above",
+    detail: "Cash prizes, trophies & exciting gifts for winners in each competition",
+  },
 ];
 
 const DANCE_PRIZES = [
@@ -193,7 +225,8 @@ export function PrizesAndBadges() {
           </div>
 
           <p className="mt-6 flex items-center justify-center gap-2 text-center text-sm text-muted-foreground">
-            <Award className="text-leaf" /> Every participant receives a Certificate of Participation.
+            <Award className="text-leaf" /> Every participant receives a Certificate of
+            Participation.
           </p>
         </div>
       </div>
@@ -220,7 +253,9 @@ export function WhatsAppReminder() {
       `Hare Krishna! Please add me for Sri Krishna Janmashtami 2026 WhatsApp reminders.\nName: ${name.trim()}\nMobile: ${phone.trim()}\nEvent: 5th September 2026, SLS International Gurukul, Horamavu.`,
     );
     window.open(`https://wa.me/${EVENT.phoneIntl}?text=${text}`, "_blank", "noopener");
-    toast.success("Opening WhatsApp", { description: "Send the message to confirm your reminders." });
+    toast.success("Opening WhatsApp", {
+      description: "Send the message to confirm your reminders.",
+    });
   };
 
   return (
@@ -254,7 +289,8 @@ export function WhatsAppReminder() {
             <BellRing /> Sign up for WhatsApp reminders
           </Button>
           <p className="mt-3 text-center text-xs text-muted-foreground">
-            You will be added to the festival broadcast list. Helpline: {EVENT.phone} · {EVENT.phoneAlt}
+            You will be added to the festival broadcast list. Helpline: {EVENT.phone} ·{" "}
+            {EVENT.phoneAlt}
           </p>
         </form>
       </div>

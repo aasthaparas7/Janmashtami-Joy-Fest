@@ -17,7 +17,6 @@ export const EVENT = {
   cashPrizes: "Cash prizes worth ₹30,000",
   freeBadges: ["Free Entry", "Free Darshan", "Free Prasad"],
   targetDate: "2026-09-05T10:00:00+05:30",
-
 } as const;
 
 export const MAPS_QUERY = encodeURIComponent(
@@ -60,8 +59,18 @@ export const HIGHLIGHTS = [
     text: "Cash prizes worth ₹30,000, trophies and certificates.",
     time: "7:30 PM",
   },
-  { icon: "🍴", title: "Food Court", text: "Delicious festive prasadam and snacks.", time: "All day" },
-  { icon: "🎮", title: "Games & Fun", text: "Activities for children and families.", time: "All day" },
+  {
+    icon: "🍴",
+    title: "Food Court",
+    text: "Delicious festive prasadam and snacks.",
+    time: "All day",
+  },
+  {
+    icon: "🎮",
+    title: "Games & Fun",
+    text: "Activities for children and families.",
+    time: "All day",
+  },
   { icon: "🛍️", title: "Flea Market", text: "Festive shopping stalls all day.", time: "All day" },
   {
     icon: "🪔",
@@ -69,20 +78,35 @@ export const HIGHLIGHTS = [
     text: "Divine procession of the Lord with kirtan.",
     time: "8:00 PM",
   },
-  { icon: "🎶", title: "Bhajan Clubbing", text: "Ecstatic kirtan to close the day.", time: "8:00 PM onwards" },
+  {
+    icon: "🎶",
+    title: "Bhajan Clubbing",
+    text: "Ecstatic kirtan to close the day.",
+    time: "8:00 PM onwards",
+  },
 ];
 
-
 export const SCHEDULE = [
-  { time: "10:00 AM", title: "Darshan Start", note: "Free darshan and free prasad through the day" },
-  { time: "10:00 AM – 2:00 PM", title: "Competitions", note: "Balgopal, Nandgopal & Nandkishore categories" },
+  {
+    time: "10:00 AM",
+    title: "Darshan Start",
+    note: "Free darshan and free prasad through the day",
+  },
+  {
+    time: "10:00 AM – 2:00 PM",
+    title: "Competitions",
+    note: "Balgopal, Nandgopal & Nandkishore categories",
+  },
   { time: "4:30 PM", title: "Cultural Program", note: "Devotional and cultural performances" },
   { time: "5:00 PM – 7:00 PM", title: "Group Dance Contest", note: "Theme based on Lord Krishna" },
-  { time: "7:30 PM", title: "Prize Distribution", note: "Cash prizes worth ₹30,000, trophies & certificates" },
+  {
+    time: "7:30 PM",
+    title: "Prize Distribution",
+    note: "Cash prizes worth ₹30,000, trophies & certificates",
+  },
   { time: "8:00 PM", title: "Palaki Utsava", note: "Divine procession of the Lord" },
   { time: "8:00 PM onwards", title: "Bhajan Clubbing", note: "Chant. Dance. Connect. Transform." },
 ];
-
 
 export const CATEGORIES = [
   {
@@ -144,9 +168,18 @@ export const FAQS = [
     q: "What are the age categories?",
     a: "Balgopal (up to 5 years), Nandgopal (6–11 years) and Nandkishore (12 years and above).",
   },
-  { q: "What is the Group Dance Contest timing?", a: "5:00 PM to 7:00 PM on 5th September 2026, open to all age groups." },
-  { q: "What are the prizes?", a: "Cash prizes worth ₹30,000 along with trophies, exciting prizes and participation certificates." },
-  { q: "Whom do I contact for general or business enquiries?", a: "Call 9483510338 or 9900170338." },
+  {
+    q: "What is the Group Dance Contest timing?",
+    a: "5:00 PM to 7:00 PM on 5th September 2026, open to all age groups.",
+  },
+  {
+    q: "What are the prizes?",
+    a: "Cash prizes worth ₹30,000 along with trophies, exciting prizes and participation certificates.",
+  },
+  {
+    q: "Whom do I contact for general or business enquiries?",
+    a: "Call 9483510338 or 9900170338.",
+  },
   {
     q: "Are participation certificates provided?",
     a: "Yes, participation certificates will be given to participants.",
@@ -189,7 +222,6 @@ export const FAQS = [
   },
 ];
 
-
 export type Guest = {
   name: string;
   role: string;
@@ -215,12 +247,32 @@ export const CHIEF_GUESTS: Guest[] = [
 export type Sponsor = { name: string; detail?: string; url?: string };
 
 export const SPONSOR_BENEFITS = [
-  { icon: "👨‍👩‍👧‍👦", title: "5,000+ Expected Footfall", text: "Reach thousands of families in a single joyful day." },
-  { icon: "🖼️", title: "Logo on All Marketing", text: "Your brand across banners, flyers and digital promotions." },
-  { icon: "✨", title: "Featured in Event Highlights", text: "Complete visibility throughout the celebration." },
-  { icon: "🏪", title: "On-Ground Stall Space", text: "Engage directly with visitors at the venue." },
+  {
+    icon: "👨‍👩‍👧‍👦",
+    title: "5,000+ Expected Footfall",
+    text: "Reach thousands of families in a single joyful day.",
+  },
+  {
+    icon: "🖼️",
+    title: "Logo on All Marketing",
+    text: "Your brand across banners, flyers and digital promotions.",
+  },
+  {
+    icon: "✨",
+    title: "Featured in Event Highlights",
+    text: "Complete visibility throughout the celebration.",
+  },
+  {
+    icon: "🏪",
+    title: "On-Ground Stall Space",
+    text: "Engage directly with visitors at the venue.",
+  },
   { icon: "📱", title: "Social Media Mentions", text: "Featured across our social channels." },
-  { icon: "🎈", title: "Family & Kids Audience", text: "Connect with an engaged community audience." },
+  {
+    icon: "🎈",
+    title: "Family & Kids Audience",
+    text: "Connect with an engaged community audience.",
+  },
 ];
 
 export const SPONSOR_TIERS: {

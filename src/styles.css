@@ -93,11 +93,10 @@
   --gradient-royal: linear-gradient(135deg, oklch(0.36 0.17 270), oklch(0.5 0.13 215));
   --gradient-gold: linear-gradient(135deg, oklch(0.88 0.15 92), oklch(0.72 0.17 62));
   --gradient-dawn: linear-gradient(180deg, oklch(0.99 0.03 96), oklch(0.94 0.07 88));
-  --gradient-midnight: linear-gradient(180deg, oklch(0.20 0.05 260), oklch(0.28 0.10 265));
+  --gradient-midnight: linear-gradient(180deg, oklch(0.2 0.05 260), oklch(0.28 0.1 265));
   --shadow-soft: 0 10px 30px -12px oklch(0.42 0.19 268 / 0.25);
   --shadow-gold: 0 12px 34px -10px oklch(0.72 0.17 62 / 0.45);
 }
-
 
 @layer base {
   * {
@@ -349,7 +348,6 @@
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 8px 24px -16px oklch(0.42 0.19 268 / 0.8);
 }
-
 
 @media (prefers-reduced-motion: reduce) {
   *,

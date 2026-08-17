@@ -35,8 +35,6 @@ function FormEmbed({ form }: { form: { short: string; embed: string; title: stri
   );
 }
 
-
-
 export const Route = createFileRoute("/register")({
   validateSearch: searchSchema,
   head: () => ({
@@ -101,4 +99,3 @@ function RegisterPage() {
     </div>
   );
 }
-

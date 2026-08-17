@@ -1,5 +1,8 @@
 # Janmashtami Joy Fest
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://makeapullrequest.com)
+
 This project was originally built with [Lovable](https://lovable.dev) and has now been ported to **Google Antigravity**.
 
 ## Overview
@@ -9,6 +12,8 @@ Janmashtami Joy Fest is a web application built using modern web technologies. W
 ## Development
 
 To work on this project locally, ensure you have Node.js and npm installed. We recommend installing Node.js with [nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+
+For details on how file-based routing works in this project, see [src/routes/README.md](src/routes/README.md).
 
 ### Getting Started
 
@@ -33,7 +38,17 @@ npm run dev
 
 ## Porting to Antigravity
 
-This project has been migrated from Lovable to Google Antigravity. 
+This project has been migrated from Lovable to Google Antigravity.
+
 - You can now use Antigravity's advanced agentic capabilities to further develop, refactor, and maintain this codebase.
 - The project is integrated with Antigravity tools, allowing for rapid iteration and seamless pair programming.
 - Note: If you still need to sync changes back to Lovable, be careful not to rewrite published git history.
+
+## Community & Contributing
+
+We welcome contributions! To ensure a smooth workflow, please review our community standards:
+
+- [**Contributing Guidelines**](CONTRIBUTING.md): Includes our required branch naming conventions, step-by-step developer workflow, and PR process.
+- [**Code of Conduct**](CODE_OF_CONDUCT.md): Ensures a welcoming and safe environment for all contributors.
+
+_Note: All Pull Requests are automatically validated by our CI checks for linting, formatting, and successful builds before they can be merged._
