@@ -35,7 +35,7 @@ export function Hero() {
       <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-12 px-4 text-center">
         {/* Text lockup */}
         <div className="animate-rise z-10 mx-auto max-w-3xl">
-          <h1 className="font-display mt-5 text-6xl leading-[1.05] text-primary sm:text-7xl lg:text-[5.5rem] drop-shadow-md">
+          <h1 className="font-display mt-5 text-5xl leading-[1.05] text-primary sm:text-7xl lg:text-[5.5rem] drop-shadow-md">
             <span className="relative inline-block">
               <FloatingFeather className="absolute -top-10 -left-6 w-16 -rotate-[15deg] sm:-top-14 sm:-left-10 sm:w-24" />
               Sri
@@ -52,7 +52,7 @@ export function Hero() {
               href="https://maps.app.goo.gl/Zj1beceWcLodTGdM8"
               target="_blank"
               rel="noopener noreferrer"
-              className="block mt-3 text-3xl sm:text-4xl text-primary font-bold drop-shadow-sm transition-colors hover:text-primary/80"
+              className="block mt-3 text-2xl sm:text-4xl text-primary font-bold drop-shadow-sm transition-colors hover:text-primary/80"
             >
               @ {EVENT.venueName}
             </a>

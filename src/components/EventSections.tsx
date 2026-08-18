@@ -193,9 +193,19 @@ export function GroupDance() {
           </p>
 
           <div className="mt-6 text-center">
-            <Button asChild variant="royal" size="xl">
-              <Link to="/register" search={{ tab: "dance" }}>
-                <Music4 /> Register for Group Dance Contest
+            <Button
+              asChild
+              variant="royal"
+              size="xl"
+              className="h-auto w-full px-4 py-3 text-center sm:w-auto"
+            >
+              <Link
+                to="/register"
+                search={{ tab: "dance" }}
+                className="flex flex-col gap-2 whitespace-normal sm:flex-row sm:whitespace-nowrap"
+              >
+                <Music4 className="shrink-0" />
+                <span>Register for Group Dance Contest</span>
               </Link>
             </Button>
           </div>

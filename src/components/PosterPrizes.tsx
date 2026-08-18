@@ -305,7 +305,7 @@ export function WhatsAppReminder() {
   };
 
   return (
-    <section id="whatsapp-reminder" className="bg-background py-16">
+    <section id="whatsapp-reminder" className="bg-muted py-16">
       <div className="mx-auto max-w-2xl px-4">
         <SectionTitle
           eyebrow="Never miss an update"

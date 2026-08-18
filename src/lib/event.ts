@@ -1,7 +1,7 @@
 export const EVENT = {
   title: "Sri Krishna Janmashtami",
   year: "2026",
-  organiser: "ISKCON",
+  organiser: "ISKCON Bengaluru",
   founder: "His Divine Grace A.C. Bhaktivedanta Swami Prabhupada",
   dateLabel: "Saturday, 5th September 2026",
   timeLabel: "10:00 AM – 9:00 PM",
@@ -93,7 +93,7 @@ export const SCHEDULE = [
   {
     time: "10:00 AM",
     title: "Darshan Start",
-    note: "Free darshan and free prasad through the day",
+    note: "Free darshan and free prasad throughout the day",
   },
   {
     time: "10:00 AM – 2:00 PM",
