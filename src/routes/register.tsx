@@ -6,8 +6,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SectionTitle } from "@/components/Decor";
 import { FloatingSocials, SiteFooter, SiteHeader, SkipLink } from "@/components/SiteChrome";
 import { GeneralInstructions } from "@/components/InfoSections";
-import { IdeaStudio } from "@/components/IdeaStudio";
-import { GreetingCardMaker } from "@/components/GreetingCardMaker";
 import { REGISTRATION_FORMS } from "@/lib/event";
 
 const searchSchema = z.object({ tab: z.enum(["kids", "dance"]).optional() });
@@ -92,8 +90,6 @@ function RegisterPage() {
         </div>
       </main>
       <GeneralInstructions />
-      <IdeaStudio />
-      <GreetingCardMaker />
       <FloatingSocials />
       <SiteFooter />
     </div>
