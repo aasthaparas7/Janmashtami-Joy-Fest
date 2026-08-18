@@ -254,34 +254,8 @@ export function Gallery() {
   );
 }
 
-const TRAVEL_MODES = [
-  { key: "driving", label: "Drive" },
-  { key: "transit", label: "Transit" },
-  { key: "walking", label: "Walk" },
-  { key: "two-wheeler", label: "Bike" },
-] as const;
-
-const ROUTE_TIPS = [
-  {
-    icon: "🚗",
-    title: "By car / cab",
-    text: "Set the destination to SLS International Gurukul, K Channasandra, Horamavu. Approx. 20 minutes from Hennur Cross and 25 minutes from Banaswadi.",
-  },
-  {
-    icon: "🚌",
-    title: "By bus",
-    text: "BMTC buses towards Horamavu / Kalkere stop at K Channasandra. The venue is a short walk from the main road junction.",
-  },
-  {
-    icon: "🚇",
-    title: "By metro + auto",
-    text: "Nearest metro is Baiyappanahalli (Purple Line); take an auto or cab from there towards Horamavu, roughly 30 minutes.",
-  },
-];
-
 export function Venue() {
-  const [mode, setMode] = useState<(typeof TRAVEL_MODES)[number]["key"]>("driving");
-  const directions = `${MAPS_DIRECTIONS}&travelmode=${mode}`;
+  const directions = MAPS_DIRECTIONS;
   const fullAddress = `${EVENT.venueName}, ${EVENT.venueAddress}`;
 
   const share = async () => {
@@ -331,23 +305,6 @@ export function Venue() {
               <MapPin className="text-saffron" /> {EVENT.venueAddress}
             </p>
 
-            <div className="mt-5 flex flex-wrap justify-center gap-2">
-              {TRAVEL_MODES.map((m) => (
-                <button
-                  key={m.key}
-                  type="button"
-                  onClick={() => setMode(m.key)}
-                  className={`rounded-full border px-4 py-1.5 text-xs font-semibold transition-colors ${
-                    mode === m.key
-                      ? "border-transparent bg-saffron text-primary-foreground"
-                      : "border-border text-muted-foreground hover:text-primary"
-                  }`}
-                >
-                  {m.label}
-                </button>
-              ))}
-            </div>
-
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
               <Button asChild variant="gold" size="xl">
                 <a href={directions} target="_blank" rel="noreferrer">
@@ -361,22 +318,6 @@ export function Venue() {
                 <Copy /> Copy Address
               </Button>
             </div>
-
-            <div className="mt-6 grid gap-3 text-left sm:grid-cols-3">
-              {ROUTE_TIPS.map((r) => (
-                <div key={r.title} className="rounded-2xl bg-secondary/30 p-4 ring-1 ring-gold/25">
-                  <p className="flex items-center gap-2 text-sm font-semibold text-primary">
-                    <span aria-hidden>{r.icon}</span> {r.title}
-                  </p>
-                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{r.text}</p>
-                </div>
-              ))}
-            </div>
-
-            <p className="mt-4 text-xs text-muted-foreground">
-              Free parking is available near the venue — call {EVENT.phone} if you need help
-              reaching us.
-            </p>
           </div>
         </div>
       </div>

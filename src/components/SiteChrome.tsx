@@ -170,13 +170,6 @@ export function FloatingSocials() {
   return (
     <div className="fixed right-4 bottom-24 z-50 flex flex-col gap-3 sm:bottom-8">
       <a
-        href="/#assistant"
-        aria-label="Ask the Festival Assistant"
-        className="grid size-12 place-items-center rounded-full bg-primary text-primary-foreground shadow-gold transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none self-end"
-      >
-        <Bot className="size-5" aria-hidden />
-      </a>
-      <a
         href={YOUTUBE_LINK}
         target="_blank"
         rel="noreferrer"

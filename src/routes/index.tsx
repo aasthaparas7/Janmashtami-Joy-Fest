@@ -13,7 +13,6 @@ import {
 } from "@/components/InfoSections";
 import { ChiefGuest, Sponsors } from "@/components/PartnersSections";
 import { PosterDownload, PrizesAndBadges, WhatsAppReminder } from "@/components/PosterPrizes";
-import { FestivalAssistant } from "@/components/FestivalAssistant";
 import { PeacockFluteParallax } from "@/components/PeacockFluteParallax";
 import {
   FloatingSocials,
@@ -111,7 +110,6 @@ function Index() {
         <Venue />
         <Contact />
         <Faq />
-        <FestivalAssistant />
         <WhatsAppSection />
         <SocialShare />
       </main>
