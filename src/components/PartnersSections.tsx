@@ -5,12 +5,15 @@ import {
   Handshake,
   HeartHandshake,
   Phone,
-  Sparkles,
   Trophy,
   Heart,
+  Download,
+  Sparkles,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { SectionTitle } from "@/components/Decor";
 import {
   CHIEF_GUESTS,
@@ -28,10 +31,17 @@ import {
 
 import slsLogo from "@/assets/logo-partner-sls-school.jpeg";
 import tumbleGymLogo from "@/assets/logo-partner-the-tumble-gym.jpeg";
+import bakkusBakeryLogo from "@/assets/logo-partner-the-bakkus-bakery.png";
+import donationPoster from "@/assets/donation_poster.jpeg";
+import stallArea1 from "@/assets/area-of-stall-1.jpeg";
+import stallArea2 from "@/assets/area-of-stall-2.jpeg";
 
 const LOGOS: Record<string, string> = {
   "logo-partner-sls-school.jpeg": slsLogo,
   "logo-partner-the-tumble-gym.jpeg": tumbleGymLogo,
+  "logo-partner-the-bakkus-bakery.png": bakkusBakeryLogo,
+  "area-of-stall-1.jpeg": stallArea1,
+  "area-of-stall-2.jpeg": stallArea2,
 };
 
 export function ChiefGuest() {
@@ -217,6 +227,41 @@ export function Sponsors() {
                   </li>
                 ))}
               </ul>
+
+              {t.images && t.images.length > 0 && (
+                <div className="mt-4 grid grid-cols-2 gap-3">
+                  {t.images.map((img, i) => (
+                    <Dialog key={img}>
+                      <DialogTrigger asChild>
+                        <div className="group relative cursor-zoom-in overflow-hidden rounded-xl border border-gold/30 shadow-sm aspect-video">
+                          <img
+                            src={LOGOS[img]}
+                            alt={`${t.tier} view ${i + 1}`}
+                            loading="lazy"
+                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          />
+                        </div>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl border-0 bg-transparent p-0 shadow-none [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/70 [&>button]:rounded-full outline-none">
+                        <TransformWrapper
+                          centerOnInit={true}
+                          minScale={0.5}
+                          maxScale={4}
+                          wheel={{ step: 0.1 }}
+                        >
+                          <TransformComponent wrapperClass="!w-full !h-[90vh] !flex !justify-center !items-center cursor-grab active:cursor-grabbing">
+                            <img
+                              src={LOGOS[img]}
+                              alt={`${t.tier} view ${i + 1}`}
+                              className="max-h-[90vh] w-auto rounded-lg object-contain pointer-events-auto"
+                            />
+                          </TransformComponent>
+                        </TransformWrapper>
+                      </DialogContent>
+                    </Dialog>
+                  ))}
+                </div>
+              )}
               <Button asChild variant="gold" className="mt-5 h-11">
                 <a
                   href={t.tier === "Stall Partner" ? SPONSOR_FORM_LINK : SPONSOR_WHATSAPP}
@@ -234,7 +279,7 @@ export function Sponsors() {
           <h3 className="font-serif-deco flex items-center justify-center gap-2 text-center text-xl text-primary">
             <Handshake className="text-leaf" aria-hidden /> Event Partners
           </h3>
-          <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+          <ul className="mt-5 grid gap-3 sm:grid-cols-3">
             {[
               ...EVENT_PARTNERS,
               ...partners.map((p) => ({
@@ -255,10 +300,7 @@ export function Sponsors() {
                   />
                 )}
                 <div>
-                  <p className="font-semibold text-primary">{p.name}</p>
-                  <p className="text-xs tracking-widest text-muted-foreground uppercase mt-1">
-                    {p.role}
-                  </p>
+                  <p className="font-semibold text-primary mt-2">{p.name}</p>
                 </div>
               </li>
             ))}
@@ -275,54 +317,83 @@ export function Sponsors() {
             below. Every contribution makes a difference!
           </p>
 
-          <ul className="mx-auto mt-5 max-w-2xl text-left text-sm text-muted-foreground space-y-2 rounded-2xl bg-secondary/30 p-4 ring-1 ring-gold/30">
-            {[...SEVAS]
-              .sort((a, b) => b.amount - a.amount)
-              .map((seva, idx, arr) => (
-                <li
-                  key={seva.name}
-                  className={`flex justify-between ${idx === arr.length - 1 ? "pt-1" : "border-b border-border/50 pb-2"}`}
-                >
-                  <span>
-                    {seva.name}{" "}
-                    {seva.description && (
-                      <span className="hidden sm:inline">({seva.description})</span>
-                    )}
-                  </span>
-                  <span className="font-semibold text-primary">
-                    Rs {seva.amount.toLocaleString("en-IN")}
-                  </span>
-                </li>
-              ))}
-          </ul>
+          <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_300px] lg:items-stretch text-left">
+            <div className="order-2 lg:order-1 flex flex-col gap-6">
+              <ul className="text-sm text-muted-foreground h-full flex flex-col justify-between rounded-2xl bg-secondary/30 p-6 ring-1 ring-gold/30">
+                {[...SEVAS]
+                  .sort((a, b) => b.amount - a.amount)
+                  .map((seva, idx, arr) => (
+                    <li
+                      key={seva.name}
+                      className={`flex items-baseline ${idx === arr.length - 1 ? "pt-1" : "pb-2"}`}
+                    >
+                      <span>
+                        {seva.name}{" "}
+                        {seva.description && (
+                          <span className="hidden sm:inline text-muted-foreground/80">
+                            ({seva.description})
+                          </span>
+                        )}
+                      </span>
+                      <span className="flex-1 mx-3 border-b-2 border-dotted border-gold/40 relative top-[-4px] opacity-60"></span>
+                      <span className="font-semibold text-primary shrink-0">
+                        Rs {seva.amount.toLocaleString("en-IN")}
+                      </span>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+            <div className="order-1 lg:order-2 flex flex-col items-center justify-center gap-4">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <div className="group relative cursor-zoom-in overflow-hidden rounded-xl w-full max-w-[280px] shadow-md ring-1 ring-gold/30 h-full max-h-[600px]">
+                    <img
+                      src={donationPoster}
+                      alt="Donation Details Poster"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
+                    {/* Gradient overlay for text contrast */}
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-b-xl" />
 
-          <div className="mt-6 flex justify-center">
-            <Button asChild variant="gold" size="xl">
+                    <div className="absolute inset-x-0 bottom-6 flex justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <Button
+                        asChild
+                        variant="gold"
+                        size="sm"
+                        className="shadow-[0_4px_24px_rgba(0,0,0,0.5)] ring-2 ring-gold/40 hover:ring-gold"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <a href={donationPoster} download="Sri_Krishna_Janmashtami_Donation.jpeg">
+                          <Download className="mr-2 h-4 w-4" /> Download Poster
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl border-0 bg-transparent p-0 shadow-none [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/70 [&>button]:rounded-full outline-none">
+                  <TransformWrapper
+                    centerOnInit={true}
+                    minScale={0.5}
+                    maxScale={4}
+                    wheel={{ step: 0.1 }}
+                  >
+                    <TransformComponent wrapperClass="!w-full !h-[90vh] !flex !justify-center !items-center cursor-grab active:cursor-grabbing">
+                      <img
+                        src={donationPoster}
+                        alt="Donation Details Poster"
+                        className="max-h-[90vh] w-auto rounded-lg object-contain pointer-events-auto"
+                      />
+                    </TransformComponent>
+                  </TransformWrapper>
+                </DialogContent>
+              </Dialog>
+            </div>
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <Button asChild variant="gold" size="xl" className="w-full text-lg sm:w-72">
               <a href={DONATION_FORM_LINK} target="_blank" rel="noreferrer">
                 Donate Now
-              </a>
-            </Button>
-          </div>
-        </div>
-
-        <div className="gold-frame mt-6 rounded-3xl bg-card p-6 text-center">
-          <p className="flex items-center justify-center gap-2 font-display text-2xl text-primary">
-            <Sparkles className="text-saffron" aria-hidden /> Let's Celebrate Together
-          </p>
-          <p className="mx-auto mt-2 max-w-2xl text-sm text-muted-foreground">
-            Interested in a custom partnership? Reach out and our team will share the complete
-            sponsorship details. Sponsorship supports prasadam distribution, prizes for children and
-            the cultural program.
-          </p>
-          <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button asChild variant="gold" size="xl">
-              <a href={SPONSOR_WHATSAPP} target="_blank" rel="noreferrer">
-                <HeartHandshake aria-hidden /> Sponsor on WhatsApp
-              </a>
-            </Button>
-            <Button asChild variant="outlineGold" size="xl">
-              <a href={`tel:+${EVENT.phoneIntl}`}>
-                <Phone aria-hidden /> Call {EVENT.phone}
               </a>
             </Button>
           </div>

@@ -1,17 +1,23 @@
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { HeartHandshake, Sparkles, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { SectionTitle } from "@/components/Decor";
 import { EVENT, LAST_YEAR_HIGHLIGHTS, LAST_YEAR_STATS, WHY_WE_DO_THIS } from "@/lib/event";
 
-import galleryDance from "@/assets/gallery-dance.jpg";
-import galleryDiyas from "@/assets/gallery-diyas.jpg";
-import galleryFamily from "@/assets/gallery-family.jpg";
+import gallery1 from "@/assets/gallery-1.png";
+import gallery2 from "@/assets/gallery-2.png";
+import gallery3 from "@/assets/gallery-3.png";
+import gallery4 from "@/assets/gallery-4.png";
+import gallery5 from "@/assets/gallery-5.png";
 
 const PHOTOS = [
-  { src: galleryDance, alt: "Children performing on stage at last year's Janmashtami celebration" },
-  { src: galleryDiyas, alt: "Lamps, garlands and peacock feather decorations from last year" },
-  { src: galleryFamily, alt: "Families enjoying the festival stalls last year" },
+  { src: gallery1, alt: "Joyful Janmashtami celebration moments" },
+  { src: gallery2, alt: "Devotees participating in the festival" },
+  { src: gallery3, alt: "Beautifully decorated temple spaces" },
+  { src: gallery4, alt: "Children dressed as Krishna and Radha" },
+  { src: gallery5, alt: "Cultural performances and celebrations" },
 ];
 
 /** Landing engagement band: last year's celebration in photos and numbers. */
@@ -22,7 +28,7 @@ export function LastYearHighlights() {
       <div className="relative mx-auto max-w-6xl px-4">
         <SectionTitle
           eyebrow="Last year's celebration"
-          title="Relive the Joy of 2025"
+          title="Glimpses of Joy"
           subtitle="Thousands of devotees, hundreds of little Krishnas and one unforgettable day of kirtan."
         />
 
@@ -38,18 +44,45 @@ export function LastYearHighlights() {
           ))}
         </dl>
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-3">
-          {PHOTOS.map((p) => (
-            <figure key={p.alt} className="gold-frame overflow-hidden rounded-2xl bg-card">
-              <img
-                src={p.src}
-                alt={p.alt}
-                loading="lazy"
-                width={1024}
-                height={768}
-                className="h-44 w-full object-cover sm:h-52"
-              />
-            </figure>
+        <div className="mt-6 grid gap-3 grid-cols-2 sm:grid-cols-6">
+          {PHOTOS.map((p, idx) => (
+            <Dialog key={p.src}>
+              <DialogTrigger asChild>
+                <figure
+                  className={`gold-frame group cursor-zoom-in relative overflow-hidden rounded-2xl bg-card ${
+                    idx < 2 ? "col-span-2 sm:col-span-3" : "col-span-2 sm:col-span-2 md:col-span-2"
+                  }`}
+                >
+                  <img
+                    src={p.src}
+                    alt={p.alt}
+                    loading="lazy"
+                    width={1024}
+                    height={768}
+                    className="h-44 w-full object-cover sm:h-52 transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-3 text-left text-xs text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    {p.alt}
+                  </figcaption>
+                </figure>
+              </DialogTrigger>
+              <DialogContent className="max-w-5xl border-0 bg-transparent p-0 shadow-none outline-none [&>button]:rounded-full [&>button]:bg-black/50 [&>button]:text-white [&>button]:hover:bg-black/70">
+                <TransformWrapper
+                  centerOnInit={true}
+                  minScale={0.5}
+                  maxScale={4}
+                  wheel={{ step: 0.1 }}
+                >
+                  <TransformComponent wrapperClass="!flex !h-[90vh] !w-full !items-center !justify-center cursor-grab active:cursor-grabbing">
+                    <img
+                      src={p.src}
+                      alt={p.alt}
+                      className="pointer-events-auto max-h-[90vh] w-auto rounded-lg object-contain"
+                    />
+                  </TransformComponent>
+                </TransformWrapper>
+              </DialogContent>
+            </Dialog>
           ))}
         </div>
 

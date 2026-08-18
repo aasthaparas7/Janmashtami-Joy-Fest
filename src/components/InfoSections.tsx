@@ -377,18 +377,28 @@ export function Contact() {
 }
 
 export function Faq() {
+  const [expanded, setExpanded] = useState(false);
+  const visibleFaqs = expanded ? FAQS : FAQS.slice(0, 5);
+
   return (
     <section id="faqs" className="bg-background py-16">
       <div className="mx-auto max-w-3xl px-4">
         <SectionTitle eyebrow="Good to know" title="Frequently Asked Questions" />
         <Accordion type="single" collapsible className="gold-frame rounded-3xl bg-card px-5">
-          {FAQS.map((f) => (
+          {visibleFaqs.map((f) => (
             <AccordionItem key={f.q} value={f.q}>
               <AccordionTrigger className="text-left text-primary">{f.q}</AccordionTrigger>
               <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
+        {FAQS.length > 5 && (
+          <div className="mt-6 text-center">
+            <Button variant="outlineGold" onClick={() => setExpanded(!expanded)}>
+              {expanded ? "Show fewer FAQs" : `View all ${FAQS.length} FAQs`}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

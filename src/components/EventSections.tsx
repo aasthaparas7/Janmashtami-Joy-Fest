@@ -18,25 +18,44 @@ export function Highlights() {
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {HIGHLIGHTS.map((h, i) => (
             <li key={h.title} className={i === 0 ? "sm:col-span-2 lg:col-span-3" : ""}>
-              <article className="lift-card gold-frame group relative h-full overflow-hidden rounded-3xl bg-card p-5 pl-6">
-                <span aria-hidden className="gradient-gold absolute inset-y-0 left-0 w-1.5" />
+              <article
+                className={`group relative h-full overflow-hidden rounded-3xl transition-all duration-500 bg-card lift-card ${
+                  i === 0
+                    ? "p-6 ring-2 ring-gold shadow-[0_0_20px_rgba(235,178,33,0.15)] hover:shadow-[0_0_30px_rgba(235,178,33,0.25)] bg-gradient-to-r from-gold/20 via-transparent to-gold/20"
+                    : "gold-frame p-5 pl-6"
+                }`}
+              >
+                <span
+                  aria-hidden
+                  className={`absolute inset-y-0 left-0 ${i === 0 ? "bg-gold w-1.5" : "gradient-gold w-1.5"}`}
+                />
                 <div
-                  className={`flex gap-4 ${i === 0 ? "items-center justify-center text-center sm:text-left" : "items-start"}`}
+                  className={`flex gap-4 ${i === 0 ? "flex-col items-center justify-center text-center py-2" : "items-start"}`}
                 >
                   <span
                     aria-hidden
-                    className="grid size-14 shrink-0 place-items-center rounded-2xl bg-secondary/40 text-3xl ring-1 ring-gold/40 transition-transform duration-300 group-hover:scale-110"
+                    className={`grid shrink-0 place-items-center rounded-2xl transition-all duration-500 group-hover:scale-110 ${
+                      i === 0
+                        ? "size-16 bg-gold/15 text-4xl ring-1 ring-gold/50"
+                        : "size-14 bg-secondary/40 text-3xl ring-1 ring-gold/40"
+                    }`}
                   >
                     {h.icon}
                   </span>
                   <div className="min-w-0">
-                    <span className="inline-flex rounded-full bg-primary/10 px-2.5 py-1 text-[10px] font-semibold tracking-widest text-primary uppercase">
+                    <span className="inline-flex rounded-full px-3 py-1 text-[10px] font-bold tracking-widest uppercase bg-primary/10 text-primary">
                       {h.time}
                     </span>
-                    <h3 className="font-serif-deco mt-2 text-lg leading-tight text-primary">
+                    <h3
+                      className={`font-serif-deco mt-2 leading-tight text-primary ${i === 0 ? "text-2xl" : "text-lg"}`}
+                    >
                       {h.title}
                     </h3>
-                    <p className="mt-1 text-sm text-muted-foreground">{h.text}</p>
+                    <p
+                      className={`mt-2 text-muted-foreground ${i === 0 ? "text-base" : "text-sm"}`}
+                    >
+                      {h.text}
+                    </p>
                   </div>
                 </div>
               </article>

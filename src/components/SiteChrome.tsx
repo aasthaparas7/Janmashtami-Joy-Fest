@@ -60,7 +60,11 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5">
         {/* Left side: Logo */}
         <div className="flex flex-1 justify-start">
-          <Link to="/" className="flex min-w-0 items-center gap-2 py-1 group">
+          <Link
+            to="/"
+            className="flex min-w-0 items-center gap-2 py-1 group"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
             <div className="relative w-12 h-10 sm:w-16 sm:h-12 flex-shrink-0">
               {/* Soft ethereal glow behind the logo */}
               <div className="absolute -top-1 left-1 w-14 h-14 sm:-top-1 sm:left-2 sm:w-20 sm:h-20 bg-white/60 blur-[12px] sm:blur-xl rounded-full z-[50]" />
@@ -231,7 +235,7 @@ export function SiteFooter() {
     <footer className="gradient-royal border-t border-gold/30 pt-12 pb-28 text-cream sm:pb-12">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 md:grid-cols-3">
         <div>
-          <h3 className="text-xl text-gold">ISKCON Bengaluru</h3>
+          <h3 className="text-xl text-gold">ISKCON HBR Bengaluru</h3>
           <p className="font-serif-deco mt-1 text-cream/85">Sri Krishna Janmashtami 2026</p>
           <p className="mt-4 text-sm text-cream/75">{EVENT.dateLabel}</p>
           <p className="text-sm text-cream/75">

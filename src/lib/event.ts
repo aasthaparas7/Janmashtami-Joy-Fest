@@ -286,6 +286,7 @@ export const SPONSOR_TIERS: {
   featured?: boolean;
   perks: string[];
   sponsors: Sponsor[];
+  images?: string[];
 }[] = [
   {
     tier: "Title Sponsor",
@@ -334,6 +335,7 @@ export const SPONSOR_TIERS: {
       "Listing on the event website",
     ],
     sponsors: [],
+    images: ["area-of-stall-1.jpeg", "area-of-stall-2.jpeg"],
   },
 ];
 
@@ -354,13 +356,14 @@ export const SEVAS: { name: string; description?: string; amount: number }[] = [
   { name: "Urja Seva", description: "Power Generator", amount: 20000 },
 ];
 
-export const EVENT_PARTNERS: { name: string; role: string; logoPath: string }[] = [
+export const EVENT_PARTNERS: { name: string; role?: string; logoPath: string }[] = [
   {
     name: "SLS International Gurukul",
     role: "Venue Partner",
     logoPath: "logo-partner-sls-school.jpeg",
   },
   { name: "The Tumble Gym", role: "Event Partner", logoPath: "logo-partner-the-tumble-gym.jpeg" },
+  { name: "The Bakkus Bakery", logoPath: "logo-partner-the-bakkus-bakery.png" },
 ];
 
 export const WINNER_CATEGORIES: { key: string; age: string }[] = [
