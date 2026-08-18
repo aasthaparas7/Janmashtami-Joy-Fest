@@ -339,9 +339,28 @@ export const SPONSOR_TIERS: {
 
 export const SPONSOR_LOGO_SLOTS = 4;
 
-export const EVENT_PARTNERS: { name: string; role: string }[] = [
-  { name: "SLS International Gurukul", role: "Venue Partner" },
-  { name: "ISKCON Bengaluru", role: "Organiser" },
+export const SEVAS: { name: string; description?: string; amount: number }[] = [
+  {
+    name: "Pandal Seva",
+    description: "Tent, Tables, Chairs, Carpet, Barricades etc.",
+    amount: 100000,
+  },
+  { name: "Mandap Shringar Seva", amount: 80000 },
+  { name: "Annadaan Seva", amount: 80000 },
+  { name: "Hari-Kirtan Dhwani Seva", description: "Sound system, MIC, amplifiers", amount: 80000 },
+  { name: "Jyoti Alankaran Seva", description: "Decoration Lights", amount: 60000 },
+  { name: "Prachar Seva", description: "Pamphlet, Poster, Hoarding", amount: 60000 },
+  { name: "Pushpa Abhisheka Seva", amount: 20000 },
+  { name: "Urja Seva", description: "Power Generator", amount: 20000 },
+];
+
+export const EVENT_PARTNERS: { name: string; role: string; logoPath: string }[] = [
+  {
+    name: "SLS International Gurukul",
+    role: "Venue Partner",
+    logoPath: "logo-partner-sls-school.jpeg",
+  },
+  { name: "The Tumble Gym", role: "Event Partner", logoPath: "logo-partner-the-tumble-gym.jpeg" },
 ];
 
 export const WINNER_CATEGORIES: { key: string; age: string }[] = [

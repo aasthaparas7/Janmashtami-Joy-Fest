@@ -23,7 +23,16 @@ import {
   SPONSOR_FORM_LINK,
   DONATION_FORM_LINK,
   WINNER_CATEGORIES,
+  SEVAS,
 } from "@/lib/event";
+
+import slsLogo from "@/assets/logo-partner-sls-school.jpeg";
+import tumbleGymLogo from "@/assets/logo-partner-the-tumble-gym.jpeg";
+
+const LOGOS: Record<string, string> = {
+  "logo-partner-sls-school.jpeg": slsLogo,
+  "logo-partner-the-tumble-gym.jpeg": tumbleGymLogo,
+};
 
 export function ChiefGuest() {
   return (
@@ -228,14 +237,29 @@ export function Sponsors() {
           <ul className="mt-5 grid gap-3 sm:grid-cols-2">
             {[
               ...EVENT_PARTNERS,
-              ...partners.map((p) => ({ name: p.name, role: p.detail || "Event Partner" })),
+              ...partners.map((p) => ({
+                name: p.name,
+                role: p.detail || "Event Partner",
+                logoPath: "",
+              })),
             ].map((p) => (
               <li
                 key={p.name}
-                className="rounded-2xl bg-secondary/30 p-4 text-center ring-1 ring-gold/30"
+                className="flex flex-col items-center justify-center gap-4 rounded-2xl bg-secondary/30 p-6 text-center ring-1 ring-gold/30"
               >
-                <p className="font-semibold text-primary">{p.name}</p>
-                <p className="text-xs tracking-widest text-muted-foreground uppercase">{p.role}</p>
+                {p.logoPath && LOGOS[p.logoPath] && (
+                  <img
+                    src={LOGOS[p.logoPath]}
+                    alt={`${p.name} Logo`}
+                    className="h-24 w-auto max-w-[200px] rounded-xl object-contain mix-blend-multiply"
+                  />
+                )}
+                <div>
+                  <p className="font-semibold text-primary">{p.name}</p>
+                  <p className="text-xs tracking-widest text-muted-foreground uppercase mt-1">
+                    {p.role}
+                  </p>
+                </div>
               </li>
             ))}
           </ul>
@@ -252,52 +276,24 @@ export function Sponsors() {
           </p>
 
           <ul className="mx-auto mt-5 max-w-2xl text-left text-sm text-muted-foreground space-y-2 rounded-2xl bg-secondary/30 p-4 ring-1 ring-gold/30">
-            <li className="flex justify-between border-b border-border/50 pb-2">
-              <span>Mandap Shringar Seva</span>{" "}
-              <span className="font-semibold text-primary">Rs 80,000</span>
-            </li>
-            <li className="flex justify-between border-b border-border/50 pb-2">
-              <span>Pushpa Abhisheka Seva</span>{" "}
-              <span className="font-semibold text-primary">Rs 20,000</span>
-            </li>
-            <li className="flex justify-between border-b border-border/50 pb-2">
-              <span>Annadaan Seva</span>{" "}
-              <span className="font-semibold text-primary">Rs 80,000</span>
-            </li>
-            <li className="flex justify-between border-b border-border/50 pb-2">
-              <span>
-                Hari-Kirtan Dhwani Seva{" "}
-                <span className="hidden sm:inline">(Sound system, MIC, amplifiers)</span>
-              </span>{" "}
-              <span className="font-semibold text-primary">Rs 80,000</span>
-            </li>
-            <li className="flex justify-between border-b border-border/50 pb-2">
-              <span>
-                Jyoti Alankaran Seva <span className="hidden sm:inline">(Decoration Lights)</span>
-              </span>{" "}
-              <span className="font-semibold text-primary">Rs 60,000</span>
-            </li>
-            <li className="flex justify-between border-b border-border/50 pb-2">
-              <span>
-                Urja Seva <span className="hidden sm:inline">(Power Generator)</span>
-              </span>{" "}
-              <span className="font-semibold text-primary">Rs 20,000</span>
-            </li>
-            <li className="flex justify-between border-b border-border/50 pb-2">
-              <span>
-                Prachar Seva <span className="hidden sm:inline">(Pamphlet, Poster, Hoarding)</span>
-              </span>{" "}
-              <span className="font-semibold text-primary">Rs 60,000</span>
-            </li>
-            <li className="flex justify-between pt-1">
-              <span>
-                Pandal Seva{" "}
-                <span className="hidden sm:inline">
-                  (Tent, Tables, Chairs, Carpet, Barricades etc.)
-                </span>
-              </span>{" "}
-              <span className="font-semibold text-primary">Rs 1,00,000</span>
-            </li>
+            {[...SEVAS]
+              .sort((a, b) => b.amount - a.amount)
+              .map((seva, idx, arr) => (
+                <li
+                  key={seva.name}
+                  className={`flex justify-between ${idx === arr.length - 1 ? "pt-1" : "border-b border-border/50 pb-2"}`}
+                >
+                  <span>
+                    {seva.name}{" "}
+                    {seva.description && (
+                      <span className="hidden sm:inline">({seva.description})</span>
+                    )}
+                  </span>
+                  <span className="font-semibold text-primary">
+                    Rs {seva.amount.toLocaleString("en-IN")}
+                  </span>
+                </li>
+              ))}
           </ul>
 
           <div className="mt-6 flex justify-center">
