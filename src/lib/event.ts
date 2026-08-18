@@ -33,6 +33,12 @@ export const YOUTUBE_LINK = "https://www.youtube.com/@gitatoday108";
 
 export const HIGHLIGHTS = [
   {
+    icon: "🎶",
+    title: "Bhajan Clubbing",
+    text: "Ecstatic kirtan to close the day.",
+    time: "8:00 PM onwards",
+  },
+  {
     icon: "🛕",
     title: "Darshan",
     text: "Free darshan of the Lord from 10:00 AM.",
@@ -81,19 +87,13 @@ export const HIGHLIGHTS = [
     text: "Divine procession of the Lord with kirtan.",
     time: "8:00 PM",
   },
-  {
-    icon: "🎶",
-    title: "Bhajan Clubbing",
-    text: "Ecstatic kirtan to close the day.",
-    time: "8:00 PM onwards",
-  },
 ];
 
 export const SCHEDULE = [
   {
     time: "10:00 AM",
     title: "Darshan Start",
-    note: "Free darshan and free prasad through the day",
+    note: "Free darshan and free prasad throughout the day",
   },
   {
     time: "10:00 AM – 2:00 PM",
@@ -286,6 +286,7 @@ export const SPONSOR_TIERS: {
   featured?: boolean;
   perks: string[];
   sponsors: Sponsor[];
+  images?: string[];
 }[] = [
   {
     tier: "Title Sponsor",
@@ -334,14 +335,35 @@ export const SPONSOR_TIERS: {
       "Listing on the event website",
     ],
     sponsors: [],
+    images: ["area-of-stall-1.jpeg", "area-of-stall-2.jpeg"],
   },
 ];
 
 export const SPONSOR_LOGO_SLOTS = 4;
 
-export const EVENT_PARTNERS: { name: string; role: string }[] = [
-  { name: "SLS International Gurukul", role: "Venue Partner" },
-  { name: "ISKCON Bengaluru", role: "Organiser" },
+export const SEVAS: { name: string; description?: string; amount: number }[] = [
+  {
+    name: "Pandal Seva",
+    description: "Tent, Tables, Chairs, Carpet, Barricades etc.",
+    amount: 100000,
+  },
+  { name: "Mandap Shringar Seva", amount: 80000 },
+  { name: "Annadaan Seva", amount: 80000 },
+  { name: "Hari-Kirtan Dhwani Seva", description: "Sound system, MIC, amplifiers", amount: 80000 },
+  { name: "Jyoti Alankaran Seva", description: "Decoration Lights", amount: 60000 },
+  { name: "Prachar Seva", description: "Pamphlet, Poster, Hoarding", amount: 60000 },
+  { name: "Pushpa Abhisheka Seva", amount: 20000 },
+  { name: "Urja Seva", description: "Power Generator", amount: 20000 },
+];
+
+export const EVENT_PARTNERS: { name: string; role?: string; logoPath: string }[] = [
+  {
+    name: "SLS International Gurukul",
+    role: "Venue Partner",
+    logoPath: "logo-partner-sls-school.jpeg",
+  },
+  { name: "The Tumble Gym", role: "Event Partner", logoPath: "logo-partner-the-tumble-gym.jpeg" },
+  { name: "The Bakkus Bakery", logoPath: "logo-partner-the-bakkus-bakery.png" },
 ];
 
 export const WINNER_CATEGORIES: { key: string; age: string }[] = [

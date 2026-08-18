@@ -19,8 +19,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { SectionTitle } from "@/components/Decor";
 import {
   EVENT,
@@ -254,34 +260,8 @@ export function Gallery() {
   );
 }
 
-const TRAVEL_MODES = [
-  { key: "driving", label: "Drive" },
-  { key: "transit", label: "Transit" },
-  { key: "walking", label: "Walk" },
-  { key: "two-wheeler", label: "Bike" },
-] as const;
-
-const ROUTE_TIPS = [
-  {
-    icon: "🚗",
-    title: "By car / cab",
-    text: "Set the destination to SLS International Gurukul, K Channasandra, Horamavu. Approx. 20 minutes from Hennur Cross and 25 minutes from Banaswadi.",
-  },
-  {
-    icon: "🚌",
-    title: "By bus",
-    text: "BMTC buses towards Horamavu / Kalkere stop at K Channasandra. The venue is a short walk from the main road junction.",
-  },
-  {
-    icon: "🚇",
-    title: "By metro + auto",
-    text: "Nearest metro is Baiyappanahalli (Purple Line); take an auto or cab from there towards Horamavu, roughly 30 minutes.",
-  },
-];
-
 export function Venue() {
-  const [mode, setMode] = useState<(typeof TRAVEL_MODES)[number]["key"]>("driving");
-  const directions = `${MAPS_DIRECTIONS}&travelmode=${mode}`;
+  const directions = MAPS_DIRECTIONS;
   const fullAddress = `${EVENT.venueName}, ${EVENT.venueAddress}`;
 
   const share = async () => {
@@ -300,7 +280,7 @@ export function Venue() {
   };
 
   return (
-    <section id="venue" className="bg-background py-16">
+    <section id="venue" className="bg-muted py-16">
       <div className="mx-auto max-w-5xl px-4">
         <SectionTitle
           eyebrow="Reach us"
@@ -331,23 +311,6 @@ export function Venue() {
               <MapPin className="text-saffron" /> {EVENT.venueAddress}
             </p>
 
-            <div className="mt-5 flex flex-wrap justify-center gap-2">
-              {TRAVEL_MODES.map((m) => (
-                <button
-                  key={m.key}
-                  type="button"
-                  onClick={() => setMode(m.key)}
-                  className={`rounded-full border px-4 py-1.5 text-xs font-semibold transition-colors ${
-                    mode === m.key
-                      ? "border-transparent bg-saffron text-primary-foreground"
-                      : "border-border text-muted-foreground hover:text-primary"
-                  }`}
-                >
-                  {m.label}
-                </button>
-              ))}
-            </div>
-
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
               <Button asChild variant="gold" size="xl">
                 <a href={directions} target="_blank" rel="noreferrer">
@@ -361,22 +324,6 @@ export function Venue() {
                 <Copy /> Copy Address
               </Button>
             </div>
-
-            <div className="mt-6 grid gap-3 text-left sm:grid-cols-3">
-              {ROUTE_TIPS.map((r) => (
-                <div key={r.title} className="rounded-2xl bg-secondary/30 p-4 ring-1 ring-gold/25">
-                  <p className="flex items-center gap-2 text-sm font-semibold text-primary">
-                    <span aria-hidden>{r.icon}</span> {r.title}
-                  </p>
-                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{r.text}</p>
-                </div>
-              ))}
-            </div>
-
-            <p className="mt-4 text-xs text-muted-foreground">
-              Free parking is available near the venue — call {EVENT.phone} if you need help
-              reaching us.
-            </p>
           </div>
         </div>
       </div>
@@ -394,22 +341,34 @@ export function Contact() {
             {EVENT.phone} · {EVENT.phoneAlt}
           </p>
           <p className="mt-1 text-sm text-muted-foreground">General &amp; business enquiries</p>
-          <div className="mt-6 grid gap-3 sm:grid-cols-3">
-            <Button asChild variant="whatsapp" size="xl">
-              <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer">
-                <MessageCircle /> WhatsApp
-              </a>
-            </Button>
-            <Button asChild variant="royal" size="xl">
-              <a href={`tel:+${EVENT.phoneIntl}`}>
-                <Phone /> Call
-              </a>
-            </Button>
-            <Button asChild variant="outlineGold" size="xl">
-              <a href={`mailto:${EVENT.email}`}>
-                <Mail /> Email
-              </a>
-            </Button>
+          <div className="mt-6 flex justify-center">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="royal" size="xl" className="w-full sm:w-64">
+                  <Phone /> Call
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="center" className="w-full sm:w-64">
+                <DropdownMenuItem asChild>
+                  <a
+                    href={`tel:+${EVENT.phoneIntl}`}
+                    className="flex w-full items-center justify-between font-medium cursor-pointer"
+                  >
+                    {EVENT.phone}
+                    <Phone className="size-4 opacity-50" />
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <a
+                    href={`tel:+${EVENT.phoneAltIntl}`}
+                    className="flex w-full items-center justify-between font-medium cursor-pointer"
+                  >
+                    {EVENT.phoneAlt}
+                    <Phone className="size-4 opacity-50" />
+                  </a>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </div>
@@ -418,18 +377,28 @@ export function Contact() {
 }
 
 export function Faq() {
+  const [expanded, setExpanded] = useState(false);
+  const visibleFaqs = expanded ? FAQS : FAQS.slice(0, 5);
+
   return (
     <section id="faqs" className="bg-background py-16">
       <div className="mx-auto max-w-3xl px-4">
         <SectionTitle eyebrow="Good to know" title="Frequently Asked Questions" />
         <Accordion type="single" collapsible className="gold-frame rounded-3xl bg-card px-5">
-          {FAQS.map((f) => (
+          {visibleFaqs.map((f) => (
             <AccordionItem key={f.q} value={f.q}>
               <AccordionTrigger className="text-left text-primary">{f.q}</AccordionTrigger>
               <AccordionContent className="text-muted-foreground">{f.a}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
+        {FAQS.length > 5 && (
+          <div className="mt-6 text-center">
+            <Button variant="outlineGold" onClick={() => setExpanded(!expanded)}>
+              {expanded ? "Show fewer FAQs" : `View all ${FAQS.length} FAQs`}
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

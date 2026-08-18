@@ -1,19 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/Hero";
-import { CalendarActions } from "@/components/CalendarActions";
-import { LastYearHighlights, WhoWeAre } from "@/components/AboutSections";
+
+import { LastYearHighlights } from "@/components/AboutSections";
 import { Competitions, GroupDance, Highlights, Schedule } from "@/components/EventSections";
-import {
-  Contact,
-  Faq,
-  Gallery,
-  SocialShare,
-  Venue,
-  WhatsAppSection,
-} from "@/components/InfoSections";
+import { Contact, Faq, SocialShare, Venue, WhatsAppSection } from "@/components/InfoSections";
 import { ChiefGuest, Sponsors } from "@/components/PartnersSections";
-import { PosterDownload, PrizesAndBadges, WhatsAppReminder } from "@/components/PosterPrizes";
-import { FestivalAssistant } from "@/components/FestivalAssistant";
+import { PosterDownload, PrizesAndBadges } from "@/components/PosterPrizes";
 import { PeacockFluteParallax } from "@/components/PeacockFluteParallax";
 import {
   FloatingSocials,
@@ -95,25 +87,21 @@ function Index() {
       <SiteHeader />
       <main id="main-content">
         <Hero />
-        <LastYearHighlights />
         <Highlights />
         <PeacockFluteParallax />
         <Schedule />
         <Competitions />
         <GroupDance />
-        <PrizesAndBadges />
+
         <PosterDownload />
-        <WhatsAppReminder />
-        <WhoWeAre />
         <ChiefGuest />
         <Sponsors />
-        <Gallery />
+        <LastYearHighlights />
         <Venue />
         <Contact />
-        <Faq />
-        <FestivalAssistant />
         <WhatsAppSection />
         <SocialShare />
+        <Faq />
       </main>
       <FloatingSocials />
       <StickyCta />

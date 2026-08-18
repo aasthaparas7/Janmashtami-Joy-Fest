@@ -8,26 +8,58 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { SectionTitle } from "@/components/Decor";
 import { EVENT } from "@/lib/event";
 
-const POSTER_PDF = "/janmashtami-2026-poster.pdf";
-const POSTER_PAGES = [
-  {
-    src: "/poster/Poster_1.jpg",
-    alt: "Sri Krishna Janmashtami 2026 event poster with schedule and venue",
+const POSTER_LANGUAGES = {
+  en: {
+    id: "en",
+    label: "English",
+    pages: [
+      {
+        src: "/poster/Poster_1.jpg",
+        alt: "Sri Krishna Janmashtami 2026 event poster with schedule and venue",
+      },
+      {
+        src: "/poster/Poster_2.jpg",
+        alt: "Janmashtami 2026 competitions poster with categories and prizes",
+      },
+    ],
+    downloadText: "Download full poster (PDF)",
+    generatingText: "Generating PDF...",
   },
-  {
-    src: "/poster/Poster_2.jpg",
-    alt: "Janmashtami 2026 competitions poster with categories and prizes",
+  hi: {
+    id: "hi",
+    label: "हिन्दी",
+    pages: [
+      { src: "/poster/Poster_1_hindi.png", alt: "श्री कृष्ण जन्माष्टमी २०२६ कार्यक्रम पोस्टर" },
+      { src: "/poster/Poster_2_hindi.png", alt: "जन्माष्टमी २०२६ प्रतियोगिताएं" },
+    ],
+    downloadText: "पूरा पोस्टर डाउनलोड करें (PDF)",
+    generatingText: "PDF बना रहा है...",
   },
-];
+  kn: {
+    id: "kn",
+    label: "ಕನ್ನಡ",
+    pages: [
+      { src: "/poster/Poster_1_kanada.png", alt: "ಶ್ರೀ ಕೃಷ್ಣ ಜನ್ಮಾಷ್ಟಮಿ 2026 ಕಾರ್ಯಕ್ರಮ ಪೋಸ್ಟರ್" },
+      { src: "/poster/Poster_2_kanada.png", alt: "ಜನ್ಮಾಷ್ಟಮಿ 2026 ಸ್ಪರ್ಧೆಗಳು" },
+    ],
+    downloadText: "ಪೂರ್ಣ ಪೋಸ್ಟರ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ (PDF)",
+    generatingText: "PDF ರಚಿಸಲಾಗುತ್ತಿದೆ...",
+  },
+} as const;
+
+type Language = keyof typeof POSTER_LANGUAGES;
 
 /** Downloadable flyer / poster with preview of both pages. */
 export function PosterDownload() {
   const [isGenerating, setIsGenerating] = useState(false);
+  const [lang, setLang] = useState<Language>("en");
+
+  const currentLang = POSTER_LANGUAGES[lang];
 
   const generateAndDownloadPDF = async () => {
     try {
       setIsGenerating(true);
-      toast.info("Generating PDF, please wait...");
+      toast.info(currentLang.generatingText);
 
       const { jsPDF } = await import("jspdf");
 
@@ -52,7 +84,7 @@ export function PosterDownload() {
         return canvas.toDataURL("image/jpeg", 0.95);
       };
 
-      const img1 = await loadImage(POSTER_PAGES[0]!.src);
+      const img1 = await loadImage(currentLang.pages[0]!.src);
       const pdf = new jsPDF({
         orientation: img1.width > img1.height ? "landscape" : "portrait",
         unit: "px",
@@ -60,14 +92,14 @@ export function PosterDownload() {
       });
       pdf.addImage(getBase64Image(img1), "JPEG", 0, 0, img1.width, img1.height);
 
-      for (let i = 1; i < POSTER_PAGES.length; i++) {
-        const src = POSTER_PAGES[i]!.src;
+      for (let i = 1; i < currentLang.pages.length; i++) {
+        const src = currentLang.pages[i]!.src;
         const img = await loadImage(src);
         pdf.addPage([img.width, img.height], img.width > img.height ? "landscape" : "portrait");
         pdf.addImage(getBase64Image(img), "JPEG", 0, 0, img.width, img.height);
       }
 
-      pdf.save("Sri-Krishna-Janmashtami-2026-Poster.pdf");
+      pdf.save(`Sri-Krishna-Janmashtami-2026-Poster-${lang}.pdf`);
       toast.success("PDF downloaded successfully!");
     } catch (err) {
       console.error("PDF Generation error:", err);
@@ -85,8 +117,22 @@ export function PosterDownload() {
           title="Download Event Poster"
           subtitle="Save the official flyer and share it on WhatsApp with family and friends."
         />
+
+        <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
+          {(Object.keys(POSTER_LANGUAGES) as Language[]).map((l) => (
+            <Button
+              key={l}
+              onClick={() => setLang(l)}
+              variant={lang === l ? "gold" : "outlineGold"}
+              className="min-w-28 text-base"
+            >
+              {POSTER_LANGUAGES[l].label}
+            </Button>
+          ))}
+        </div>
+
         <div className="grid gap-5 sm:grid-cols-2">
-          {POSTER_PAGES.map((p, i) => (
+          {currentLang.pages.map((p, i) => (
             <figure
               key={p.src}
               className="lift-card gold-frame overflow-hidden rounded-3xl bg-card p-3 h-full"
@@ -141,7 +187,7 @@ export function PosterDownload() {
         <div className="mt-7 text-center">
           <Button onClick={generateAndDownloadPDF} disabled={isGenerating} variant="gold" size="xl">
             {isGenerating ? <Loader2 className="animate-spin" /> : <Download />}
-            {isGenerating ? "Generating PDF..." : "Download full poster (PDF)"}
+            {isGenerating ? currentLang.generatingText : currentLang.downloadText}
           </Button>
         </div>
       </div>
@@ -259,7 +305,7 @@ export function WhatsAppReminder() {
   };
 
   return (
-    <section id="whatsapp-reminder" className="bg-background py-16">
+    <section id="whatsapp-reminder" className="bg-muted py-16">
       <div className="mx-auto max-w-2xl px-4">
         <SectionTitle
           eyebrow="Never miss an update"
