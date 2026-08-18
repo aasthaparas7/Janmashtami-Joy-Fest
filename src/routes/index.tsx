@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/Hero";
-import { CalendarActions } from "@/components/CalendarActions";
+
 import { LastYearHighlights, WhoWeAre } from "@/components/AboutSections";
 import { Competitions, GroupDance, Highlights, Schedule } from "@/components/EventSections";
 import {
@@ -101,7 +101,7 @@ function Index() {
         <Schedule />
         <Competitions />
         <GroupDance />
-        <PrizesAndBadges />
+
         <PosterDownload />
         <WhatsAppReminder />
         <WhoWeAre />

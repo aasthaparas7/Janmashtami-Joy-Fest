@@ -1,7 +1,7 @@
 export const EVENT = {
   title: "Sri Krishna Janmashtami",
   year: "2026",
-  organiser: "ISKCON Bengaluru",
+  organiser: "ISKCON",
   founder: "His Divine Grace A.C. Bhaktivedanta Swami Prabhupada",
   dateLabel: "Saturday, 5th September 2026",
   timeLabel: "10:00 AM – 9:00 PM",
@@ -32,6 +32,12 @@ export const INSTAGRAM_LINK =
 export const YOUTUBE_LINK = "https://www.youtube.com/@gitatoday108";
 
 export const HIGHLIGHTS = [
+  {
+    icon: "🎶",
+    title: "Bhajan Clubbing",
+    text: "Ecstatic kirtan to close the day.",
+    time: "8:00 PM onwards",
+  },
   {
     icon: "🛕",
     title: "Darshan",
@@ -80,12 +86,6 @@ export const HIGHLIGHTS = [
     title: "Palaki Utsava",
     text: "Divine procession of the Lord with kirtan.",
     time: "8:00 PM",
-  },
-  {
-    icon: "🎶",
-    title: "Bhajan Clubbing",
-    text: "Ecstatic kirtan to close the day.",
-    time: "8:00 PM onwards",
   },
 ];
 

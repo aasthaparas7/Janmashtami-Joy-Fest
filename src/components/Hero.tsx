@@ -35,10 +35,6 @@ export function Hero() {
       <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-12 px-4 text-center">
         {/* Text lockup */}
         <div className="animate-rise z-10 mx-auto max-w-3xl">
-          <p className="text-[11px] font-semibold tracking-[0.35em] text-saffron uppercase">
-            {EVENT.organiser}
-          </p>
-          <div className="ornate-rule mx-auto mt-4 w-44" />
           <h1 className="font-display mt-5 text-6xl leading-[1.05] text-primary sm:text-7xl lg:text-[5.5rem] drop-shadow-md">
             <span className="relative inline-block">
               <FloatingFeather className="absolute -top-10 -left-6 w-16 -rotate-[15deg] sm:-top-14 sm:-left-10 sm:w-24" />
@@ -52,9 +48,14 @@ export function Hero() {
           </h1>
           <p className="font-serif-deco mt-4 text-lg text-saffron sm:text-xl leading-relaxed">
             Celebrate the Divine Birth of Lord Krishna
-            <span className="block mt-3 text-3xl sm:text-4xl text-primary font-bold drop-shadow-sm">
+            <a
+              href="https://maps.app.goo.gl/Zj1beceWcLodTGdM8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block mt-3 text-3xl sm:text-4xl text-primary font-bold drop-shadow-sm transition-colors hover:text-primary/80"
+            >
               @ {EVENT.venueName}
-            </span>
+            </a>
           </p>
           <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground">
             A joyful day of devotion, culture, competitions, dance, music, food, games and family
@@ -92,25 +93,6 @@ export function Hero() {
             <Chip icon={<CalendarDays className="size-4" />}>{EVENT.dateLabel}</Chip>
             <Chip icon={<Clock className="size-4" />}>{EVENT.timeLabel}</Chip>
           </div>
-
-          <a
-            href="#venue"
-            className="group mt-6 block mx-auto max-w-md rounded-2xl border border-gold/30 bg-card/40 p-4 backdrop-blur-sm shadow-soft transition-all hover:scale-[1.02] hover:bg-card/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-          >
-            <div className="flex items-center justify-center gap-4 text-left">
-              <div className="flex shrink-0 items-center justify-center rounded-full bg-saffron/15 p-3 text-saffron transition-colors group-hover:bg-saffron/25">
-                <MapPin className="size-6 transition-transform group-hover:scale-110" />
-              </div>
-              <div>
-                <p className="font-serif-deco text-lg font-bold text-primary transition-colors group-hover:text-gold-deep">
-                  {EVENT.venueName}
-                </p>
-                <p className="text-sm text-muted-foreground leading-snug mt-0.5">
-                  {EVENT.venueAddress}
-                </p>
-              </div>
-            </div>
-          </a>
 
           <div className="mt-5 flex flex-wrap justify-center gap-2">
             {EVENT.freeBadges.map((b) => (

@@ -83,7 +83,7 @@ export function WhoWeAre() {
         <SectionTitle
           light
           eyebrow="Who we are"
-          title="ISKCON, Bengaluru"
+          title="ISKCON"
           subtitle="A community of families serving Sri Krishna in Horamavu and around."
         />
 

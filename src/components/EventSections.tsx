@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { Award, CheckCircle2, Music4, Trophy } from "lucide-react";
+import { Award, CheckCircle2, Music4, Trophy, Ticket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionTitle } from "@/components/Decor";
-import { CalendarActions } from "@/components/CalendarActions";
+
 import { CATEGORIES, EVENT, HIGHLIGHTS, SCHEDULE } from "@/lib/event";
 
 export function Highlights() {
@@ -15,12 +15,14 @@ export function Highlights() {
           title="Program Highlights"
           subtitle="A full day of devotion, culture and family joy — from the morning competitions to the closing kirtan."
         />
-        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 [&>li:last-child:nth-child(3n+1)]:lg:col-start-2">
-          {HIGHLIGHTS.map((h) => (
-            <li key={h.title}>
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {HIGHLIGHTS.map((h, i) => (
+            <li key={h.title} className={i === 0 ? "sm:col-span-2 lg:col-span-3" : ""}>
               <article className="lift-card gold-frame group relative h-full overflow-hidden rounded-3xl bg-card p-5 pl-6">
                 <span aria-hidden className="gradient-gold absolute inset-y-0 left-0 w-1.5" />
-                <div className="flex items-start gap-4">
+                <div
+                  className={`flex gap-4 ${i === 0 ? "items-center justify-center text-center sm:text-left" : "items-start"}`}
+                >
                   <span
                     aria-hidden
                     className="grid size-14 shrink-0 place-items-center rounded-2xl bg-secondary/40 text-3xl ring-1 ring-gold/40 transition-transform duration-300 group-hover:scale-110"
@@ -73,7 +75,6 @@ export function Schedule() {
           ))}
         </ol>
         <p className="mt-6 text-center text-sm text-cream/85">Event concludes at 9:00 PM</p>
-        <CalendarActions />
       </div>
     </section>
   );
@@ -110,7 +111,7 @@ export function Competitions() {
 
         <div className="gold-frame mt-8 rounded-3xl bg-secondary/40 p-6 text-center">
           <p className="flex items-center justify-center gap-2 font-display text-2xl text-primary">
-            <Trophy className="text-saffron" /> Cash Prizes Worth ₹25,000
+            <Trophy className="text-saffron" /> Cash Prizes Worth ₹30,000
           </p>
           <p className="mt-2 text-sm text-muted-foreground">
             Registration fee of ₹150 for competition to be paid on the spot.
@@ -159,6 +160,15 @@ export function GroupDance() {
               <p className="text-xs tracking-widest text-muted-foreground uppercase">Venue</p>
               <p className="font-semibold text-primary">SLS International Gurukul</p>
             </div>
+          </div>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-6 rounded-2xl bg-secondary/30 px-6 py-4 shadow-inner ring-1 ring-gold/20 sm:gap-12">
+            {EVENT.freeBadges.map((b) => (
+              <div key={b} className="flex items-center gap-2">
+                <Ticket className="size-5 text-leaf" />
+                <span className="font-serif-deco text-lg text-primary">{b}</span>
+              </div>
+            ))}
           </div>
 
           <div className="mt-7 grid gap-4 sm:grid-cols-3">
