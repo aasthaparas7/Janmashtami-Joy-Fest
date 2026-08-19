@@ -45,6 +45,7 @@ import galleryDance from "@/assets/gallery-dance.jpg";
 import galleryDiyas from "@/assets/gallery-diyas.jpg";
 import galleryFamily from "@/assets/gallery-family.jpg";
 import krishnaImage from "@/assets/Hero_Image_Lord_Krishna_and_Radha_Ji.jpg";
+import qrCodeImage from "@/assets/whatsapp-grp.jpeg";
 
 const SHARE_TEXT =
   "Sri Krishna Janmashtami 2026 · ISKCON Bengaluru · 5th September 2026 at SLS International Gurukul, Horamavu.";
@@ -56,7 +57,7 @@ function useShareUrl() {
 }
 
 export function WhatsAppSection() {
-  const qr = `https://api.qrserver.com/v1/create-qr-code/?size=440x440&data=${encodeURIComponent(WHATSAPP_LINK)}`;
+  const qr = qrCodeImage;
   const copyLink = async () => {
     await navigator.clipboard.writeText(WHATSAPP_LINK);
     toast.success("WhatsApp invite link copied!");
