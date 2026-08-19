@@ -207,7 +207,7 @@ export function GroupDance() {
             <Award className="text-leaf" /> All participants will receive Certificates of
             Participation.
           </p>
-          <p className="mt-2 text-center text-sm font-medium text-primary">
+          <p className="mt-2 text-center text-sm font-bold text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.8)] animate-pulse">
             Registration Deadline: {EVENT.deadline}
           </p>
 

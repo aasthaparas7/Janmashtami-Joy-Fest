@@ -4,8 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Countdown } from "@/components/Countdown";
 import { FloatingFeather, Petals } from "@/components/Decor";
 import { EVENT } from "@/lib/event";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import krishnaImage from "@/assets/Hero_Image_Lord_Krishna_and_Radha_Ji.jpg";
 import bgImage from "@/assets/home_page_background.png";
+import bannerImage from "@/assets/banner.jpeg";
 
 function Chip({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) {
   return (
@@ -117,6 +120,39 @@ export function Hero() {
             </Button>
           </div>
 
+          <div className="mt-12 mx-auto max-w-4xl w-full">
+            <figure className="lift-card gold-frame overflow-hidden rounded-3xl bg-card p-3">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <div className="group relative cursor-zoom-in overflow-hidden rounded-2xl">
+                    <img
+                      src={bannerImage}
+                      alt="Sri Krishna Janmashtami 2026 Banner"
+                      loading="lazy"
+                      className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl border-0 bg-transparent p-0 shadow-none [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/70 [&>button]:rounded-full outline-none">
+                  <TransformWrapper
+                    centerOnInit={true}
+                    minScale={0.5}
+                    maxScale={4}
+                    wheel={{ step: 0.1 }}
+                  >
+                    <TransformComponent wrapperClass="!w-full !h-[90vh] !flex !justify-center !items-center cursor-grab active:cursor-grabbing">
+                      <img
+                        src={bannerImage}
+                        alt="Sri Krishna Janmashtami 2026 Banner"
+                        className="max-h-[90vh] w-auto rounded-lg object-contain pointer-events-auto"
+                      />
+                    </TransformComponent>
+                  </TransformWrapper>
+                </DialogContent>
+              </Dialog>
+            </figure>
+          </div>
+
           <div className="mt-12 flex flex-col items-center">
             <p className="mb-3 text-[11px] tracking-[0.3em] text-muted-foreground uppercase">
               Celebration begins in
@@ -128,7 +164,7 @@ export function Hero() {
 
       <div className="relative mx-auto mt-14 max-w-2xl px-4 text-center">
         <div className="ornate-rule mx-auto w-56" />
-        <p className="mt-4 text-xs text-muted-foreground">Founder Acharya: {EVENT.founder}</p>
+        <p className="mt-4 text-xs text-muted-foreground font-bold">Founder: {EVENT.founder}</p>
       </div>
     </section>
   );

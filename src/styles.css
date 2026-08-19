@@ -275,6 +275,20 @@
   animation: gold-shimmer 6s linear infinite;
 }
 
+@utility text-primary-shimmer {
+  background-image: linear-gradient(
+    110deg,
+    var(--primary) 40%,
+    oklch(0.65 0.2 268) 50%,
+    var(--primary) 60%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gold-shimmer 3s linear infinite;
+}
+
 @utility animate-halo {
   animation: halo-pulse 5s ease-in-out infinite;
 }

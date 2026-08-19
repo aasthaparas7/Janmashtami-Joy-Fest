@@ -1,23 +1,14 @@
 import { useEffect, useState } from "react";
 import { EVENT } from "@/lib/event";
-
-function diff(target: number) {
-  const ms = Math.max(0, target - Date.now());
-  return {
-    days: Math.floor(ms / 86400000),
-    hours: Math.floor((ms / 3600000) % 24),
-    minutes: Math.floor((ms / 60000) % 60),
-    seconds: Math.floor((ms / 1000) % 60),
-  };
-}
+import { getTimeDiff } from "@/lib/utils";
 
 export function Countdown() {
   const target = new Date(EVENT.targetDate).getTime();
-  const [t, setT] = useState<ReturnType<typeof diff> | null>(null);
+  const [t, setT] = useState<ReturnType<typeof getTimeDiff> | null>(null);
 
   useEffect(() => {
-    setT(diff(target));
-    const id = setInterval(() => setT(diff(target)), 1000);
+    setT(getTimeDiff(target));
+    const id = setInterval(() => setT(getTimeDiff(target)), 1000);
     return () => clearInterval(id);
   }, [target]);
 
@@ -39,7 +30,7 @@ export function Countdown() {
             aria-hidden
             className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent opacity-50"
           />
-          <div className="font-display text-2xl text-primary tabular-nums sm:text-4xl drop-shadow-md">
+          <div className="font-display text-2xl tabular-nums sm:text-4xl drop-shadow-md text-primary-shimmer">
             {t ? String(value).padStart(2, "0") : "--"}
           </div>
           <div className="mt-1 text-[10px] tracking-widest text-primary/70 uppercase sm:text-xs font-semibold">
