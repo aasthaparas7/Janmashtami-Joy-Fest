@@ -32,7 +32,8 @@ import {
 import slsLogo from "@/assets/logo-partner-sls-school.jpeg";
 import tumbleGymLogo from "@/assets/logo-partner-the-tumble-gym.jpeg";
 import bakkusBakeryLogo from "@/assets/logo-partner-the-bakkus-bakery.png";
-import donationPoster from "@/assets/donation_poster.jpeg";
+import sponsorPoster from "@/assets/sponsor.jpeg";
+import donationQr from "@/assets/donation-qr.jpeg";
 import stallArea1 from "@/assets/area-of-stall-1.jpeg";
 import stallArea2 from "@/assets/area-of-stall-2.jpeg";
 
@@ -319,7 +320,7 @@ export function Sponsors() {
 
           <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_300px] lg:items-stretch text-left">
             <div className="order-2 lg:order-1 flex flex-col gap-6">
-              <ul className="text-sm text-muted-foreground h-full flex flex-col justify-between rounded-2xl bg-secondary/30 p-6 ring-1 ring-gold/30">
+              <ul className="text-sm text-muted-foreground flex-1 flex flex-col justify-between rounded-2xl bg-secondary/30 p-6 ring-1 ring-gold/30 min-h-[300px]">
                 {[...SEVAS]
                   .sort((a, b) => b.amount - a.amount)
                   .map((seva, idx, arr) => (
@@ -342,14 +343,51 @@ export function Sponsors() {
                     </li>
                   ))}
               </ul>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 rounded-2xl bg-secondary/30 p-6 ring-1 ring-gold/30">
+                <div className="text-center sm:text-left flex-1">
+                  <p className="font-serif-deco text-xl text-primary">Scan to Donate</p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Use any UPI app to scan the QR code and make your generous contribution
+                    directly.
+                  </p>
+                </div>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <div className="group relative cursor-zoom-in rounded-xl shadow-sm ring-1 ring-gold/30 p-2 bg-white">
+                      <img
+                        src={donationQr}
+                        alt="Donate via QR Code"
+                        className="w-32 h-32 md:w-36 md:h-36 object-contain transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-md border-0 bg-transparent p-0 shadow-none [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/70 [&>button]:rounded-full outline-none">
+                    <TransformWrapper
+                      centerOnInit={true}
+                      minScale={0.5}
+                      maxScale={4}
+                      wheel={{ step: 0.1 }}
+                    >
+                      <TransformComponent wrapperClass="!w-full !h-[80vh] !flex !justify-center !items-center cursor-grab active:cursor-grabbing">
+                        <img
+                          src={donationQr}
+                          alt="Donate via QR Code"
+                          className="max-h-[80vh] w-auto rounded-xl object-contain pointer-events-auto bg-white p-4"
+                        />
+                      </TransformComponent>
+                    </TransformWrapper>
+                  </DialogContent>
+                </Dialog>
+              </div>
             </div>
             <div className="order-1 lg:order-2 flex flex-col items-center justify-center gap-4">
               <Dialog>
                 <DialogTrigger asChild>
                   <div className="group relative cursor-zoom-in overflow-hidden rounded-xl w-full max-w-[280px] shadow-md ring-1 ring-gold/30 h-full max-h-[600px]">
                     <img
-                      src={donationPoster}
-                      alt="Donation Details Poster"
+                      src={sponsorPoster}
+                      alt="Sponsorship Details Poster"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                     />
                     {/* Gradient overlay for text contrast */}
@@ -363,7 +401,7 @@ export function Sponsors() {
                         className="shadow-[0_4px_24px_rgba(0,0,0,0.5)] ring-2 ring-gold/40 hover:ring-gold"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <a href={donationPoster} download="Sri_Krishna_Janmashtami_Donation.jpeg">
+                        <a href={sponsorPoster} download="Sri_Krishna_Janmashtami_Sponsorship.jpeg">
                           <Download className="mr-2 h-4 w-4" /> Download Poster
                         </a>
                       </Button>
@@ -379,8 +417,8 @@ export function Sponsors() {
                   >
                     <TransformComponent wrapperClass="!w-full !h-[90vh] !flex !justify-center !items-center cursor-grab active:cursor-grabbing">
                       <img
-                        src={donationPoster}
-                        alt="Donation Details Poster"
+                        src={sponsorPoster}
+                        alt="Sponsorship Details Poster"
                         className="max-h-[90vh] w-auto rounded-lg object-contain pointer-events-auto"
                       />
                     </TransformComponent>
