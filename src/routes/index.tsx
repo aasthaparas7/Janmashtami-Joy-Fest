@@ -14,6 +14,7 @@ import {
   SkipLink,
   StickyCta,
 } from "@/components/SiteChrome";
+import { WelcomeBanner } from "@/components/WelcomeBanner";
 import { FAQS } from "@/lib/event";
 
 const TITLE = "Sri Krishna Janmashtami 2026 | ISKCON Bengaluru";
@@ -83,6 +84,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="min-h-dvh bg-background">
+      <WelcomeBanner />
       <SkipLink />
       <SiteHeader />
       <main id="main-content">

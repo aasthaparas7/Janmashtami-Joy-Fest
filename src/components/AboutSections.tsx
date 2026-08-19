@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { HeartHandshake, Sparkles, Users } from "lucide-react";
@@ -20,6 +21,66 @@ const PHOTOS = [
   { src: gallery5, alt: "Cultural performances and celebrations" },
 ];
 
+function CountingNumber({ value }: { value: string }) {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+
+  const numStr = value.replace(/[^0-9]/g, "");
+  const suffix = value.replace(/[0-9,]/g, "");
+  const target = parseInt(numStr, 10);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry) {
+          setIsVisible(entry.isIntersecting);
+        }
+      },
+      { threshold: 0.1 },
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible || isNaN(target)) {
+      setCount(0);
+      return;
+    }
+
+    const duration = 2000;
+    const startTime = performance.now();
+    let animationFrameId: number;
+
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+
+      setCount(Math.floor(easeProgress * target));
+
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isVisible, target]);
+
+  if (isNaN(target)) return <span ref={ref}>{value}</span>;
+
+  return (
+    <span ref={ref}>
+      {count.toLocaleString()}
+      {suffix}
+    </span>
+  );
+}
+
 /** Landing engagement band: last year's celebration in photos and numbers. */
 export function LastYearHighlights() {
   return (
@@ -36,7 +97,9 @@ export function LastYearHighlights() {
           {LAST_YEAR_STATS.map((s) => (
             <div key={s.label} className="gold-frame rounded-2xl bg-card p-4 text-center">
               <dt className="sr-only">{s.label}</dt>
-              <dd className="font-display text-3xl text-primary sm:text-4xl">{s.value}</dd>
+              <dd className="font-display text-3xl text-primary sm:text-4xl">
+                <CountingNumber value={s.value} />
+              </dd>
               <p className="mt-1 text-[11px] tracking-widest text-muted-foreground uppercase">
                 {s.label}
               </p>

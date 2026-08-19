@@ -2,7 +2,7 @@ export const EVENT = {
   title: "Sri Krishna Janmashtami",
   year: "2026",
   organiser: "ISKCON Bengaluru",
-  founder: "His Divine Grace A.C. Bhaktivedanta Swami Prabhupada",
+  founder: "His Divine Grace Acharya A.C. Bhaktivedanta Swami Prabhupada",
   dateLabel: "Saturday, 5th September 2026",
   timeLabel: "10:00 AM – 9:00 PM",
   venueName: "SLS International Gurukul",
@@ -382,8 +382,8 @@ export const DONATION_FORM_LINK =
   "https://docs.google.com/forms/d/e/1FAIpQLSdAa6kOF1SujAp8T2EXeRiITXQLWZsGgMV1pPUzuZNFcZSOMA/viewform";
 
 export const LAST_YEAR_STATS: { value: string; label: string }[] = [
-  { value: "3,000+", label: "Devotees & guests" },
-  { value: "250+", label: "Kids participants" },
+  { value: "5,000+", label: "Devotees & guests" },
+  { value: "500+", label: "Kids participants" },
   { value: "20+", label: "Dance teams" },
   { value: "5,000+", label: "Prasadam plates" },
 ];
