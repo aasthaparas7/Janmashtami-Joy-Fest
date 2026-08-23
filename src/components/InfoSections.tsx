@@ -20,7 +20,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -75,19 +82,40 @@ export function WhatsAppSection() {
             updates and announcements.
           </p>
           <div className="mt-6 flex flex-col items-center gap-5 sm:flex-row sm:justify-center sm:text-left">
-            <div className="relative">
-              <img
-                src={qr}
-                alt="QR code to join the Janmashtami WhatsApp group"
-                width={220}
-                height={220}
-                loading="lazy"
-                className="gold-frame size-[220px] rounded-2xl bg-card p-3"
-              />
-              <span className="absolute -top-2 -right-2 rounded-full bg-saffron px-3 py-1 text-xs font-semibold text-primary-foreground shadow-lg">
-                Scan me
-              </span>
-            </div>
+            <Dialog>
+              <DialogTrigger asChild>
+                <div className="relative cursor-zoom-in transition-transform duration-300 hover:scale-105 group">
+                  <img
+                    src={qr}
+                    alt="QR code to join the Janmashtami WhatsApp group"
+                    width={220}
+                    height={220}
+                    loading="lazy"
+                    className="gold-frame size-[220px] rounded-2xl bg-card p-3 transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
+                  <span className="absolute -top-2 -right-2 rounded-full bg-saffron px-3 py-1 text-xs font-semibold text-primary-foreground shadow-lg z-10 pointer-events-none">
+                    Scan me
+                  </span>
+                </div>
+              </DialogTrigger>
+              <DialogContent className="max-w-md border-0 bg-transparent p-0 shadow-none [&>button]:text-white [&>button]:bg-black/50 [&>button]:hover:bg-black/70 [&>button]:rounded-full outline-none">
+                <DialogTitle className="sr-only">Zoomed QR Code</DialogTitle>
+                <TransformWrapper
+                  centerOnInit={true}
+                  minScale={0.5}
+                  maxScale={4}
+                  wheel={{ step: 0.1 }}
+                >
+                  <TransformComponent wrapperClass="!w-full !h-[90vh] !flex !justify-center !items-center cursor-grab active:cursor-grabbing">
+                    <img
+                      src={qr}
+                      alt="QR code to join the Janmashtami WhatsApp group"
+                      className="max-h-[80vh] w-auto rounded-lg object-contain pointer-events-auto bg-white p-4"
+                    />
+                  </TransformComponent>
+                </TransformWrapper>
+              </DialogContent>
+            </Dialog>
             <div className="w-full max-w-xs text-center sm:text-left">
               <p className="text-sm text-muted-foreground">Or message us directly</p>
               <p className="font-display text-2xl text-primary">{EVENT.phone}</p>

@@ -24,9 +24,7 @@ export const MAPS_QUERY = encodeURIComponent(
 );
 export const MAPS_DIRECTIONS = `https://www.google.com/maps/dir/?api=1&destination=${MAPS_QUERY}`;
 export const MAPS_EMBED = `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`;
-export const WHATSAPP_LINK = `https://wa.me/${EVENT.phoneIntl}?text=${encodeURIComponent(
-  "Hare Krishna! I would like to know more about Sri Krishna Janmashtami 2026 at ISKCON.",
-)}`;
+export const WHATSAPP_LINK = "https://chat.whatsapp.com/LOJkfuaW0fTBQZRpC5e7x7";
 export const INSTAGRAM_LINK =
   "https://www.instagram.com/slsinternationalgurukul?igsh=azhneG54Mmttd3h6&igsi=azhneG54Mmttd3h6";
 export const YOUTUBE_LINK = "https://www.youtube.com/@gitatoday108";
@@ -230,20 +228,23 @@ export type Guest = {
   role: string;
   note?: string;
   announced: boolean;
+  image?: string;
 };
 
 export const CHIEF_GUESTS: Guest[] = [
   {
-    name: "To be announced",
+    name: "Sri B.A. BASAVARAJANNA",
     role: "Chief Guest",
-    note: "The chief guest for Sri Krishna Janmashtami 2026 will be announced closer to the festival.",
-    announced: false,
+    note: "Former Minister, Urban Development, M.L.A - K.R. Puram Constituency",
+    announced: true,
+    image: "chief_guest",
   },
   {
-    name: "To be announced",
+    name: "Smt SHANTHA KRISHNAMURTHY",
     role: "Guest of Honour",
-    note: "Felicitation of winners at 7:30 PM.",
-    announced: false,
+    note: "Founder and President of SK Foundation",
+    announced: true,
+    image: "guest_of_honor",
   },
 ];
 
@@ -373,9 +374,7 @@ export const WINNER_CATEGORIES: { key: string; age: string }[] = [
   { key: "Group Dance", age: "Team Contest" },
 ];
 
-export const SPONSOR_WHATSAPP = `https://wa.me/${EVENT.phoneIntl}?text=${encodeURIComponent(
-  "Hare Krishna! I am interested in sponsoring / partnering for Sri Krishna Janmashtami 2026 at ISKCON.",
-)}`;
+export const SPONSOR_WHATSAPP = "https://chat.whatsapp.com/LOJkfuaW0fTBQZRpC5e7x7";
 export const SPONSOR_FORM_LINK =
   "https://docs.google.com/forms/d/e/1FAIpQLSeFE4L3gHRLn1OhOM-NdTooVnasxibzcgYw3JB5RI080BpBzg/viewform";
 export const DONATION_FORM_LINK =
