@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import bannerImage from "@/assets/banner.jpeg";
+import bannerImage from "@/assets/New_poster.png";
 import { EVENT } from "@/lib/event";
 import { getTimeDiff } from "@/lib/utils";
 

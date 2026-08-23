@@ -36,6 +36,8 @@ import sponsorPoster from "@/assets/sponsor.jpeg";
 import donationQr from "@/assets/donation-qr.jpeg";
 import stallArea1 from "@/assets/area-of-stall-1.jpeg";
 import stallArea2 from "@/assets/area-of-stall-2.jpeg";
+import chiefGuestImg from "@/assets/chief_guest.jpeg";
+import guestOfHonorImg from "@/assets/guest_of_honor.jpeg";
 
 const LOGOS: Record<string, string> = {
   "logo-partner-sls-school.jpeg": slsLogo,
@@ -43,6 +45,11 @@ const LOGOS: Record<string, string> = {
   "logo-partner-the-bakkus-bakery.png": bakkusBakeryLogo,
   "area-of-stall-1.jpeg": stallArea1,
   "area-of-stall-2.jpeg": stallArea2,
+};
+
+const GUEST_IMAGES: Record<string, string> = {
+  chief_guest: chiefGuestImg,
+  guest_of_honor: guestOfHonorImg,
 };
 
 export function ChiefGuest() {
@@ -61,17 +68,27 @@ export function ChiefGuest() {
               key={g.role}
               className="lift-card gold-frame rounded-3xl bg-card p-6 text-center"
             >
-              <span
+              <div
                 aria-hidden
-                className="mx-auto grid size-16 place-items-center rounded-full bg-secondary/40 ring-1 ring-gold/40"
+                className="mx-auto flex h-36 w-36 sm:h-40 sm:w-40 items-center justify-center overflow-hidden rounded-2xl bg-secondary/10 ring-2 ring-gold/30 shadow-sm"
               >
-                <Crown className="size-7 text-saffron" />
-              </span>
-              <p className="mt-3 text-xs font-semibold tracking-widest text-primary uppercase">
+                {g.image && GUEST_IMAGES[g.image] ? (
+                  <img
+                    src={GUEST_IMAGES[g.image]}
+                    alt={g.name}
+                    className="h-full w-full object-contain"
+                  />
+                ) : (
+                  <Crown className="size-10 text-saffron" />
+                )}
+              </div>
+              <p className="mt-5 text-xs font-semibold tracking-widest text-primary uppercase">
                 {g.role}
               </p>
-              <h3 className="font-serif-deco mt-1 text-xl text-primary">{g.name}</h3>
-              {g.note ? <p className="mt-2 text-sm text-muted-foreground">{g.note}</p> : null}
+              <h3 className="font-serif-deco mt-1 text-2xl text-primary">{g.name}</h3>
+              {g.note ? (
+                <p className="mt-2 text-sm text-muted-foreground whitespace-pre-line">{g.note}</p>
+              ) : null}
               {!g.announced ? (
                 <span className="mt-4 inline-flex rounded-full bg-primary/10 px-3 py-1 text-[10px] font-semibold tracking-widest text-primary uppercase">
                   Stay tuned
