@@ -363,6 +363,85 @@
   box-shadow: 0 8px 24px -16px oklch(0.42 0.19 268 / 0.8);
 }
 
+/* ---- Music hint floating pill ---- */
+/* Appears near the audio toggle when autoplay is blocked */
+.music-hint-pill {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: -4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: color-mix(in oklab, var(--card) 92%, transparent);
+  border: 1px solid color-mix(in oklab, var(--gold) 50%, transparent);
+  border-radius: 999px;
+  font-family: var(--font-serif-deco);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--saffron);
+  white-space: nowrap;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 4px 20px -4px oklch(0.42 0.19 268 / 0.2),
+    0 0 14px -2px color-mix(in oklab, var(--gold) 25%, transparent);
+  animation:
+    music-hint-enter 0.5s ease-out,
+    music-hint-glow 2.5s ease-in-out 0.6s infinite;
+  pointer-events: none; /* Don't block user interactions */
+  z-index: 100;
+}
+
+/* Arrow pointing up toward the audio button */
+.music-hint-pill::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: 14px;
+  width: 10px;
+  height: 10px;
+  background: color-mix(in oklab, var(--card) 92%, transparent);
+  border-left: 1px solid color-mix(in oklab, var(--gold) 50%, transparent);
+  border-top: 1px solid color-mix(in oklab, var(--gold) 50%, transparent);
+  transform: rotate(45deg);
+}
+
+@keyframes music-hint-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes music-hint-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 4px 20px -4px oklch(0.42 0.19 268 / 0.2),
+      0 0 14px -2px color-mix(in oklab, var(--gold) 25%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 4px 24px -4px oklch(0.42 0.19 268 / 0.3),
+      0 0 22px -2px color-mix(in oklab, var(--gold) 45%, transparent);
+  }
+}
+
+/* Responsive adjustments for the music hint pill */
+@media (max-width: 480px) {
+  .music-hint-pill {
+    font-size: 11px;
+    padding: 6px 12px;
+    right: -8px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
