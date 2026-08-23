@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { CalendarDays, Clock, MapPin } from "lucide-react";
+import { CalendarDays, Clock, Volume2, VolumeX, Music } from "lucide-react";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import { Countdown } from "@/components/Countdown";
 import { FloatingFeather, Petals } from "@/components/Decor";
@@ -9,6 +11,7 @@ import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import krishnaImage from "@/assets/Hero_Image_Lord_Krishna_and_Radha_Ji.jpg";
 import bgImage from "@/assets/home_page_background.png";
 import bannerImage from "@/assets/New_poster.png";
+import audioFile from "@/assets/audio/mahamantra_audio.mp3";
 
 function Chip({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) {
   return (
@@ -20,12 +23,198 @@ function Chip({ icon, children }: { icon: React.ReactNode; children: React.React
 }
 
 export function Hero() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
+  const [showMusicHint, setShowMusicHint] = useState(false);
+
+  const isAllowedRef = useRef(true);
+  const isPlayingRef = useRef(false);
+  const needsGestureRef = useRef(false);
+  const isHeroVisibleRef = useRef(true);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const fadeOutInterval = useRef<ReturnType<typeof setInterval> | null>(null);
+  const fadeInInterval = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const updatePlayingState = (playing: boolean) => {
+    isPlayingRef.current = playing;
+    setIsPlaying(playing);
+  };
+
+  const fadeAudio = useCallback((audio: HTMLAudioElement, type: "in" | "out") => {
+    if (fadeOutInterval.current) clearInterval(fadeOutInterval.current);
+    if (fadeInInterval.current) clearInterval(fadeInInterval.current);
+
+    if (type === "out") {
+      let vol = audio.volume;
+      fadeOutInterval.current = setInterval(() => {
+        if (vol > 0.05) {
+          vol -= 0.05;
+          audio.volume = vol;
+        } else {
+          clearInterval(fadeOutInterval.current!);
+          audio.pause();
+          audio.volume = 1; // Reset volume for next time
+        }
+      }, 50);
+    } else {
+      audio.volume = 0;
+      audio
+        .play()
+        .then(() => {
+          // Play succeeded — update state only now (not optimistically)
+          needsGestureRef.current = false;
+          setShowMusicHint(false);
+          updatePlayingState(true);
+          let vol = 0;
+          fadeInInterval.current = setInterval(() => {
+            if (vol < 0.95) {
+              vol += 0.05;
+              audio.volume = vol;
+            } else {
+              clearInterval(fadeInInterval.current!);
+              audio.volume = 1;
+            }
+          }, 50);
+        })
+        .catch((err) => {
+          console.log("Autoplay blocked:", err);
+          // Don't poison isAllowedRef — the user hasn't opted out,
+          // the browser just needs a gesture first.
+          needsGestureRef.current = true;
+          setShowMusicHint(true);
+        });
+    }
+  }, []);
+
+  // IntersectionObserver — manages hero visibility and auto-play/pause
+  useEffect(() => {
+    const section = sectionRef.current;
+    const audio = audioRef.current;
+    if (!section || !audio) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+        isHeroVisibleRef.current = entry.isIntersecting;
+
+        if (entry.isIntersecting) {
+          // Only auto-start if user hasn't disabled, audio isn't playing,
+          // and we're not waiting for a gesture (which would fail again).
+          if (isAllowedRef.current && !isPlayingRef.current && !needsGestureRef.current) {
+            fadeAudio(audio, "in");
+          }
+        } else {
+          if (isPlayingRef.current) {
+            updatePlayingState(false); // Immediate so re-entry doesn't double-fade
+            fadeAudio(audio, "out");
+          }
+        }
+      },
+      { threshold: 0.05 },
+    );
+
+    observer.observe(section);
+    return () => {
+      observer.disconnect();
+    };
+  }, [fadeAudio]);
+
+  // One-shot gesture listener — unlocks audio after browser blocks autoplay.
+  // Listens for click, touchstart, keydown, and scroll (fallback for some browsers).
+  useEffect(() => {
+    if (!showMusicHint) return;
+
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const handleGesture = () => {
+      if (!needsGestureRef.current) return;
+
+      // Only auto-start if hero is still visible and user hasn't disabled
+      if (isHeroVisibleRef.current && isAllowedRef.current) {
+        fadeAudio(audio, "in");
+        // fadeAudio will set needsGestureRef=false & showMusicHint=false on success.
+        // On failure (e.g. scroll on a browser that doesn't count it as gesture),
+        // they remain true so the listeners stay active for the next interaction.
+      } else {
+        // Hero not visible or user disabled — dismiss the hint quietly
+        needsGestureRef.current = false;
+        setShowMusicHint(false);
+      }
+    };
+
+    const gestureEvents = ["click", "touchstart", "keydown", "scroll"];
+    gestureEvents.forEach((e) => document.addEventListener(e, handleGesture, { passive: true }));
+
+    return () => {
+      gestureEvents.forEach((e) => document.removeEventListener(e, handleGesture));
+    };
+  }, [showMusicHint, fadeAudio]);
+
+  // Cleanup intervals on unmount
+  useEffect(() => {
+    return () => {
+      if (fadeOutInterval.current) clearInterval(fadeOutInterval.current);
+      if (fadeInInterval.current) clearInterval(fadeInInterval.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    setPortalTarget(document.getElementById("audio-toggle-portal"));
+  }, []);
+
+  const togglePlay = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (!isPlayingRef.current) {
+      isAllowedRef.current = true;
+      needsGestureRef.current = false;
+      setShowMusicHint(false);
+      // State will update in fadeAudio's .then() on success
+      fadeAudio(audio, "in");
+    } else {
+      isAllowedRef.current = false;
+      updatePlayingState(false);
+      fadeAudio(audio, "out");
+    }
+  };
+
+  const audioControls = (
+    <div className="relative flex items-center">
+      <Button
+        variant="ghost"
+        size="icon"
+        className="rounded-full hover:bg-secondary/40"
+        onClick={togglePlay}
+        aria-label={isPlaying ? "Pause Background Music" : "Play Background Music"}
+      >
+        {isPlaying ? (
+          <Volume2 className="h-5 w-5 text-saffron" />
+        ) : (
+          <VolumeX className="h-5 w-5 text-foreground/75" />
+        )}
+      </Button>
+      {showMusicHint && (
+        <div className="music-hint-pill" role="status" aria-live="polite">
+          <Music className="h-3.5 w-3.5 flex-shrink-0" />
+          <span>Tap for Mantra Chanting</span>
+        </div>
+      )}
+    </div>
+  );
+
   return (
     <section
+      ref={sectionRef}
       id="home"
       className="relative overflow-hidden pt-24 pb-16 sm:pt-28 bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
+      <audio ref={audioRef} src={audioFile} loop />
+      {portalTarget && createPortal(audioControls, portalTarget)}
       <div className="absolute inset-0 bg-background/20" />
       <div aria-hidden className="mandala-bg absolute inset-0 opacity-20" />
       <Petals />
@@ -111,7 +300,7 @@ export function Hero() {
             </span>
           </div>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center relative">
             <Button asChild variant="gold" size="xl" className="hover-scale">
               <Link to="/register">Register for Competitions</Link>
             </Button>
