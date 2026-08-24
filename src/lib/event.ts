@@ -233,7 +233,7 @@ export type Guest = {
 
 export const CHIEF_GUESTS: Guest[] = [
   {
-    name: "Sri B.A. BASAVARAJANNA",
+    name: "Sri B.A. BASAVARAJA",
     role: "Chief Guest",
     note: "Former Minister, Urban Development, M.L.A - K.R. Puram Constituency",
     announced: true,

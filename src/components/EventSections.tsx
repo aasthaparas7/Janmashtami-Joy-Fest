@@ -93,7 +93,29 @@ export function Schedule() {
             </li>
           ))}
         </ol>
-        <p className="mt-6 text-center text-sm text-cream/85">Event concludes at 9:00 PM</p>
+        <div className="mt-10 flex flex-col items-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button asChild variant="gold" size="lg">
+              <a
+                href="https://drive.google.com/file/d/1Mc7wltSm6FnKIBUY6MCddp0sK3_KZi89/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Floor Planning
+              </a>
+            </Button>
+            <Button asChild variant="gold" size="lg">
+              <a
+                href="https://docs.google.com/spreadsheets/d/1aTNfal_UONqi9tqdqTU1FtUqdgp-5CrogXIbswzXZAo/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Parayanam Schedule
+              </a>
+            </Button>
+          </div>
+          <p className="text-center text-sm text-cream/85">Event concludes at 9:00 PM</p>
+        </div>
       </div>
     </section>
   );

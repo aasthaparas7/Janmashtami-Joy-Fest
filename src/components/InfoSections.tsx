@@ -444,6 +444,28 @@ export function SocialShare() {
       <div className="mx-auto max-w-3xl px-4">
         <SectionTitle eyebrow="Spread the joy" title="Follow & Share the Celebration" />
         <div className="gold-frame rounded-3xl bg-secondary/25 p-6 text-center">
+          <div className="mb-8 rounded-2xl bg-gradient-to-r from-gold/20 via-transparent to-gold/20 p-6 ring-1 ring-gold/30">
+            <h3 className="font-serif-deco text-2xl text-primary">📸 Photo & Reels Contest 2026</h3>
+            <p className="mt-2 text-sm text-muted-foreground max-w-2xl mx-auto">
+              Capture the divine moments! Share your best reels and posts from the celebration, tag
+              our profile, and stand a chance to win an{" "}
+              <span className="font-bold text-saffron">exclusive prize</span>. Let your creativity
+              and devotion shine!
+            </p>
+            <div className="mt-5 flex justify-center">
+              <Button
+                asChild
+                variant="gold"
+                size="lg"
+                className="animate-pulse shadow-[0_0_15px_rgba(235,178,33,0.4)]"
+              >
+                <a href="https://forms.gle/AtwmD16ATdrX5D6n8" target="_blank" rel="noreferrer">
+                  Submit Your Entry Here
+                </a>
+              </Button>
+            </div>
+          </div>
+
           <div className="flex flex-wrap justify-center gap-4">
             <Button
               asChild
