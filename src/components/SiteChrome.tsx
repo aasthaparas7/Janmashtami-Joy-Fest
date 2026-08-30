@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, MessageCircle, Phone, Youtube, Instagram, Bot } from "lucide-react";
+import { Menu, MessageCircle, Phone, Youtube, Instagram, Bot, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -10,7 +10,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { EVENT, WHATSAPP_LINK, SPONSOR_WHATSAPP, INSTAGRAM_LINK, YOUTUBE_LINK } from "@/lib/event";
+import {
+  EVENT,
+  WHATSAPP_LINK,
+  SPONSOR_WHATSAPP,
+  INSTAGRAM_LINK,
+  YOUTUBE_LINK,
+  FACEBOOK_LINK,
+} from "@/lib/event";
 
 const NAV = [
   { label: "Home", href: "/#home" },
@@ -192,6 +199,15 @@ export function FloatingSocials() {
         className="grid size-12 place-items-center rounded-full bg-gradient-to-tr from-[#fd5949] to-[#d6249f] text-primary-foreground shadow-gold transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none self-end"
       >
         <Instagram className="size-5" aria-hidden />
+      </a>
+      <a
+        href={FACEBOOK_LINK}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Visit our Facebook page"
+        className="grid size-12 place-items-center rounded-full bg-[#1877F2] text-primary-foreground shadow-gold transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none self-end"
+      >
+        <Facebook className="size-5" aria-hidden />
       </a>
       <a
         href={SPONSOR_WHATSAPP}

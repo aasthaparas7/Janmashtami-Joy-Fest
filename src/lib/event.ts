@@ -25,9 +25,9 @@ export const MAPS_QUERY = encodeURIComponent(
 export const MAPS_DIRECTIONS = `https://www.google.com/maps/dir/?api=1&destination=${MAPS_QUERY}`;
 export const MAPS_EMBED = `https://www.google.com/maps?q=${MAPS_QUERY}&output=embed`;
 export const WHATSAPP_LINK = "https://chat.whatsapp.com/LOJkfuaW0fTBQZRpC5e7x7";
-export const INSTAGRAM_LINK =
-  "https://www.instagram.com/slsinternationalgurukul?igsh=azhneG54Mmttd3h6&igsi=azhneG54Mmttd3h6";
+export const INSTAGRAM_LINK = "https://www.instagram.com/gita.today108?igsi=cHFoMzAyZ2dtOXF1";
 export const YOUTUBE_LINK = "https://www.youtube.com/@gitatoday108";
+export const FACEBOOK_LINK = "https://www.facebook.com/people/Gita-today/100076573131986/#";
 
 export const HIGHLIGHTS = [
   {
