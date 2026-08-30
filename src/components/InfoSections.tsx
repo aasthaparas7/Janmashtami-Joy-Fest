@@ -4,6 +4,7 @@ import {
   Download,
   Youtube,
   Instagram,
+  Facebook,
   Mail,
   MapPin,
   MessageCircle,
@@ -45,6 +46,7 @@ import {
   WHATSAPP_LINK,
   INSTAGRAM_LINK,
   YOUTUBE_LINK,
+  FACEBOOK_LINK,
   SPONSOR_WHATSAPP,
 } from "@/lib/event";
 
@@ -481,6 +483,14 @@ export function SocialShare() {
             >
               <a href={YOUTUBE_LINK} target="_blank" rel="noreferrer">
                 <Youtube className="size-4 mr-2" /> YouTube
+              </a>
+            </Button>
+            <Button
+              asChild
+              className="bg-[#1877F2] hover:bg-[#1877F2]/90 text-white font-semibold transition-all hover:-translate-y-0.5 shadow-sm border-0"
+            >
+              <a href={FACEBOOK_LINK} target="_blank" rel="noreferrer">
+                <Facebook className="size-4 mr-2" /> Facebook
               </a>
             </Button>
             <Button
